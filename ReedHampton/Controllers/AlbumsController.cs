@@ -7,6 +7,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using ReedHampton.Models;
+using System.IO;
 
 namespace ReedHampton.Controllers
 {
@@ -40,7 +41,8 @@ namespace ReedHampton.Controllers
         // GET: Albums/Create
         public ActionResult Create()
         {
-            return View();
+            var model = new AlbumViewModel();
+            return View(model);
         }
 
         // POST: Albums/Create
@@ -48,18 +50,53 @@ namespace ReedHampton.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Name,Description,IsPublic")] Album album)
+        public ActionResult Create(AlbumViewModel model)
         {
+            var validImageTypes = new string[]
+            {
+                "image/gif",
+                "image/jpeg",
+                "image/pjpeg",
+                "image/png"
+            };
+
+            if (model.AlbumThumbnailUpload == null || model.AlbumThumbnailUpload.ContentLength == 0)
+            {
+                ModelState.AddModelError("ThumbnailUpload", "This field is required");
+            }
+            else if (!validImageTypes.Contains(model.AlbumThumbnailUpload.ContentType))
+            {
+                ModelState.AddModelError("ThumbnailUpload", "Please choose either a GIF, JPG or PNG image.");
+            }
+
             if (ModelState.IsValid)
             {
-                album.CreatedDate = DateTime.Now;
+                var albumToAdd = new Album();
 
-                db.Albums.Add(album);
+                albumToAdd.Name = model.Name;
+                albumToAdd.Description = model.Description;
+                albumToAdd.IsPublic = model.IsPublic;
+                albumToAdd.CreatedDate = DateTime.Now;
+
+                if (model.AlbumThumbnailUpload != null && model.AlbumThumbnailUpload.ContentLength > 0)
+                {
+                    var uploadDir = "~/ImageUploads/AlbumThumbnailUploads";
+                    var imagePath = Path.Combine(Server.MapPath(uploadDir), model.AlbumThumbnailUpload.FileName);
+                    var imageUrl = Path.Combine(uploadDir, model.AlbumThumbnailUpload.FileName);
+
+                        imageUrl = imageUrl.Replace(@"\" , "/");
+                        imagePath = imagePath.Replace(@"\", "/");
+                      
+                    model.AlbumThumbnailUpload.SaveAs(imagePath);
+                    albumToAdd.AlbumThumbnailUrl = imageUrl;
+                }
+
+                db.Albums.Add(albumToAdd);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(album);
+            return View(model);
         }
 
         // GET: Albums/Edit/5

@@ -232,9 +232,22 @@
     <Compile Include="Migrations\201707060049402_ImageChangeRequiredFields.Designer.cs">
       <DependentUpon>201707060049402_ImageChangeRequiredFields.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707060441246_AlbumThumbnailInitial.cs" />
+    <Compile Include="Migrations\201707060441246_AlbumThumbnailInitial.Designer.cs">
+      <DependentUpon>201707060441246_AlbumThumbnailInitial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707060444301_AlbumThumbnailUndo.cs" />
+    <Compile Include="Migrations\201707060444301_AlbumThumbnailUndo.Designer.cs">
+      <DependentUpon>201707060444301_AlbumThumbnailUndo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707060457513_AlbumThumbnailTwo.cs" />
+    <Compile Include="Migrations\201707060457513_AlbumThumbnailTwo.Designer.cs">
+      <DependentUpon>201707060457513_AlbumThumbnailTwo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
+    <Compile Include="Models\AlbumViewModel.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageViewModel.cs" />
@@ -348,6 +361,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707060049402_ImageChangeRequiredFields.resx">
       <DependentUpon>201707060049402_ImageChangeRequiredFields.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707060441246_AlbumThumbnailInitial.resx">
+      <DependentUpon>201707060441246_AlbumThumbnailInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707060444301_AlbumThumbnailUndo.resx">
+      <DependentUpon>201707060444301_AlbumThumbnailUndo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707060457513_AlbumThumbnailTwo.resx">
+      <DependentUpon>201707060457513_AlbumThumbnailTwo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

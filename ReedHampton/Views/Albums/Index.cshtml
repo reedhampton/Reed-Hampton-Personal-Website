@@ -4,33 +4,56 @@
     ViewBag.Title = "Index";
 }
 
+<script>
+    function changeBackground(url)
+    {
+        document.getElementById('Jumbotron').style.backgroundImage ="url(\"" + url + ")";
+    }
+</script>
 <br />
 <h2>Photo Albums</h2>
 
 @{
     if (User.Identity.IsAuthenticated)
     {
-        <input type="button" class="btn btn-success" value="Add Album" onclick="window.location = 'Create';" />
+        <input type="button" class="btn btn-success" value="Add Album" onclick="window.location = 'Albums/Create';" />
     }
 }
 
 <br />
 <br />
-
-@foreach (var album in Model)
-{
-    <a href="~/Images/Albums" style="text-decoration:none;">
-        <div class="jumbotron">
-            <h1>@album.Name</h1>
-            <p class="lead">@album.Description</p>
-        </div>
-    </a>
-
-    if (User.Identity.IsAuthenticated)
+@{
+    foreach (var album in Model)
     {
-        <input type="button" class="btn btn-success" value="Edit" onclick="location.href='@Url.Action("Edit", "Albums")?id=' + @album.Id" />
-        <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", "Albums")?id=' + @album.Id" />
-    }
 
-    <br /><br /><br />
+        string thumbnailPath = album.AlbumThumbnailUrl;
+        string finalPath = "";
+
+        string start = "";
+        string close = "";
+
+        if (thumbnailPath != null)
+        {
+            thumbnailPath = thumbnailPath.Remove(0, 2);
+            finalPath = @Request.ApplicationPath + thumbnailPath;
+
+            start = "<div class=\"jumbotron\" style=\"background-image:url(../.."  + finalPath + ")\">";
+            close = "</div>";
+        }
+
+        <a href="~/Images/Albums" style="text-decoration:none;">
+            @(new HtmlString(start))
+                <h1>@album.Name</h1>
+                <p class="lead">@album.Description</p>
+            @(new HtmlString(close))
+        </a>
+
+        if (User.Identity.IsAuthenticated)
+        {
+            <input type="button" class="btn btn-success" value="Edit" onclick="location.href='@Url.Action("Edit", "Albums")?id=' + @album.Id" />
+            <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", "Albums")?id=' + @album.Id" />
+        }
+
+        <br /><br /><br />
+    }
 }

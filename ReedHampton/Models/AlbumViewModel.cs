@@ -1,18 +1,18 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
 
 namespace ReedHampton.Models
 {
-    public class Album
+    public class AlbumViewModel
     {
-        [Key]
-        public int Id { get; set; }
-
-        [Required]
         [Display(Name = "Album Title")]
         public string Name { get; set; }
 
-        [Required]
+        [DataType(DataType.Html)]
         [Display(Name = "Description")]
         public string Description { get; set; }
 
@@ -20,11 +20,9 @@ namespace ReedHampton.Models
         [Display(Name = "Public")]
         public bool IsPublic { get; set; }
 
-        [DataType(DataType.DateTime)]
-        [Display(Name = "Date Created")]
-        public DateTime? CreatedDate { get; set; }
+        [DataType(DataType.Upload)]
+        [Display(Name = "Thumbnail")]
+        public HttpPostedFileBase AlbumThumbnailUpload { get; set; }
 
-        [DataType(DataType.ImageUrl)]
-        public string AlbumThumbnailUrl { get; set; }
     }
 }

@@ -29,5 +29,9 @@ namespace ReedHampton.Models
         {
             return new ApplicationDbContext();
         }
+
+        public System.Data.Entity.DbSet<ReedHampton.Models.Image> Images { get; set; }
+
+        public System.Data.Entity.DbSet<ReedHampton.Models.Album> Albums { get; set; }
     }
 }

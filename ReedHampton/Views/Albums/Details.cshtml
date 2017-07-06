@@ -1,0 +1,35 @@
+﻿@model ReedHampton.Models.Album
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<head>
+    <style>
+        img {
+            display: block;
+            margin-left: 200px;
+            max-width: 1035px;
+            max-height: 428px;
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+
+
+<h2>@Html.ValueFor(model => model.Name)</h2>
+
+<hr />
+
+   
+
+<div>
+    <hr />
+
+</div>
+
+
+    @Html.ActionLink("Edit", "Edit", new { id = Model.Id}) |
+    <input type="button" class="btn btn-success" value="View Albums" onclick="window.location = '../../Albums/Index';" />
+

@@ -1,0 +1,36 @@
+﻿@model IEnumerable<ReedHampton.Models.Album>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<br />
+<h2>Photo Albums</h2>
+
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <input type="button" class="btn btn-success" value="Add Album" onclick="window.location = 'Create';" />
+    }
+}
+
+<br />
+<br />
+
+@foreach (var album in Model)
+{
+    <a href="~/Images/Albums" style="text-decoration:none;">
+        <div class="jumbotron">
+            <h1>@album.Name</h1>
+            <p class="lead">@album.Description</p>
+        </div>
+    </a>
+
+    if (User.Identity.IsAuthenticated)
+    {
+        <input type="button" class="btn btn-success" value="Edit" onclick="location.href='@Url.Action("Edit", "Albums")?id=' + @album.Id" />
+        <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", "Albums")?id=' + @album.Id" />
+    }
+
+    <br /><br /><br />
+}

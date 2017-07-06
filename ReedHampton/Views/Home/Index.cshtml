@@ -2,30 +2,74 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
+<div class="img">
+    <!--<img src="~/Images/Germany-Cover-Photo.jpg" />-->
 </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+<div class="jumbotron" style="background-image: url(../../ImageUploads/Germany-Cover-Photo.jpg)">
+    <h1>Welcome!</h1>
+    <p class="lead">Developer, Tech Enthusiast, Avid Reader/Novelist, Amateur Photographer...</p>
+</div>
+
+<hr />
+
+<!--DEVELOPER-->
+<h1 style="text-align:left; font-size:32px; font-family:'Bodoni MT'">Discount Steve Jobs...</h1>
+<div>
+    <p style="text-indent:80px;font-size:20px; ">
+        Whether it's a personal website, an online calculator, a financial hub for a student organization or a mobile app released on IOS.
+        I enjoy being able to sit down and, from nothing, create something unique and personal with nothing but a keyboard, my wits, and abut 100 Google searches a minute.
+    </p>
+</div>
+
+<!--AMATEUR PHOTOGRAPHER-->
+<h1 style="text-align:left; font-size:32px; font-family:'Bodoni MT'">Amateur Ansel Adams...</h1>
+<div>
+    <p style="text-indent:80px;font-size:20px; ">
+        Traveling is one of the most enjoyable things in life, and what better way to remember your travels than with photos. With a little bit of effort, a nice camera, and the self-confidence
+        to look like <strong>that</strong> tourist at any given time, anyone can get lucky and get the shot of a lifetime. Or at least one good enough to throw up on IG for a few likes.
+    </p>
+</div>
+
+<!--AMATEUR NOVELIST-->
+<h1 style="text-align:left; font-size:32px; font-family:'Bodoni MT'">Poor Man's Hemmingway...</h1>
+<div>
+    <p style="text-indent:80px;font-size:20px; ">
+        Who doesn't think they're the next Hemmingway everytime their mom says their short stories were <italic>"alright...not a total waste of time"</italic>. Letting the creative juices flow
+        while sipping a cup of coffee has the dual efect of making you <strong>feel</strong> productive while making you look like that hipster who refuses to drink Starbucks.
+    </p>
+</div>
+
+<!--TECH ENTHUSIAST-->
+<h1 style="text-align:left; font-size:32px; font-family:'Bodoni MT'">Wannabe Marques Brownlee...</h1>
+<div>
+    <p style="text-indent:80px;font-size:20px; ">
+        Watching reviews of fancy new tech on YouTube is a great way to keep in the loop while making you feel like you can afford the nicer things in life. All the while providing you convenient
+        excuses for not owning the new Huawei because "You would <strong>never</strong> buy an Android without the Qualcomm Snapdragon 835".
+    </p>
+</div>
+<!--SEPERATING LINE-->
+<hr />
+
+<!--TEMPORARY ADMIN LINKS-->
+<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
+<h2 style="text-align:left; font-size:40px; font-family:'Bodoni MT'"> Admin Links... </h2>
+<div>
+    <h3 style="text-align:left; padding-left:50px; font-size:24px; font-family:'Bodoni MT'"> Photo Gallery</h3>
+    <div style="text-align:center">
+        <p> @Html.ActionLink("Add Album", "Index", "Albums") </p>
+        <p> @Html.ActionLink("Edit Album", "Contact", "Home") </p>
+        <p> @Html.ActionLink("Remove Album", "Contact", "Home") </p>
+
+        <p> @Html.ActionLink("Add Images", "Create", "Images") </p>
+        <p> @Html.ActionLink("View Images", "Index", "Images") </p>
+
     </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+
+    <h3 style="text-align:left; padding-left:50px; font-size:24px; font-family:'Bodoni MT'"> Book Suggestions</h3>
+    <div style="text-align:center">
+        <p> @Html.ActionLink("Add Book", "Contact", "Home") </p>
+        <p> @Html.ActionLink("Edit Book", "Contact", "Home") </p>
+        <p> @Html.ActionLink("Remove Book", "Contact", "Home") </p>
     </div>
 </div>

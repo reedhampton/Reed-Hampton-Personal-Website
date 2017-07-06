@@ -1,4 +1,10 @@
 ﻿<!DOCTYPE html>
+
+<style>
+    #ContactMe {
+        margin-left: 250px;
+    }
+</style>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -6,8 +12,8 @@
     <title>@ViewBag.Title - My ASP.NET Application</title>
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
-
 </head>
+
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
@@ -17,15 +23,17 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Reed Hampton", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Development", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Tech Reviews", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Book Suggestions", "Contact", "Home")</li>
+                    <li>@Html.ActionLink("Photos", "Index", "Albums")</li>
+                    <li>@Html.ActionLink("Blog", "Contact", "Home")</li>
+                    <li id="ContactMe">@Html.ActionLink("Contact Me", "Contact", "Home")</li>
                 </ul>
-                @Html.Partial("_LoginPartial")
             </div>
         </div>
     </div>
@@ -33,7 +41,19 @@
         @RenderBody()
         <hr />
         <footer>
-            <p>&copy; @DateTime.Now.Year - My ASP.NET Application</p>
+            <p>&copy; @DateTime.Now.Year - Reed Hampton</p>
+            @if (!User.Identity.IsAuthenticated)
+            {
+                <p>@Html.ActionLink("Admin", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</p>
+            }
+            @if (User.Identity.IsAuthenticated)
+            {
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                {
+                    @Html.AntiForgeryToken()
+                    <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>
+                }
+            }
         </footer>
     </div>
 

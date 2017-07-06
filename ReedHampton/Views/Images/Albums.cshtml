@@ -1,0 +1,78 @@
+﻿@model IEnumerable<ReedHampton.Models.Image>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<html>
+<head>
+    <style>
+        img {
+            display: block;
+            margin-left: 200px;
+            max-width: 1035px;
+            max-height: 428px;
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+
+    <br /><br />
+
+    <h1>Photo Gallery</h1>
+    @{
+        if(User.Identity.IsAuthenticated)
+        {
+            <input type="button" class="btn btn-success" value="Add Image" onclick="window.location = 'Create';" />
+            <input type="button" class="btn btn-success" value="View Albums" onclick="window.location = '../Albums/Index';" />
+        }
+    }
+
+    @{
+        string img_path = "";
+        int img_Id;
+        string urlq = "";
+        string q = "";
+
+        string[] img_urls = new string[100];
+        int[] img_Ids = new int[100];
+        int count = 0;
+
+        foreach (var i in Model)
+        {
+            img_Id = i.Id;
+            img_path = i.ImageUrl;
+            if (img_path != null)
+            {
+                img_path = img_path.Remove(0, 2);
+
+                urlq = @Request.ApplicationPath + img_path;
+                q = "<img src=\"" + urlq + "\" alt=\"TEST\"/>";
+
+                img_urls[count] = q;
+                img_Ids[count] = img_Id;
+                count++;
+            }
+        }
+    }
+
+    @for (int i = 0; i < 100; ++i)
+    {
+        if (img_urls[i] != null)
+        {
+            <hr />
+            if (User.Identity.IsAuthenticated)
+            {
+                <input type="button" class="btn btn-success" style="float:right; margin-left:25px;" value="Edit" onclick="location.href='@Url.Action("Edit", "Images")?id=' + @img_Ids[i]" />
+                <input type="button" class="btn btn-danger" style="float:right" value="Delete" onclick="location.href='@Url.Action("Delete", "Images")?id=' + @img_Ids[i]" />
+            }
+            @(new HtmlString(img_urls[i]))
+        }
+    }
+
+</body>
+
+</html>

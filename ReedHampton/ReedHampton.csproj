@@ -189,13 +189,55 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707041648366_InitialCreate.cs" />
+    <Compile Include="Migrations\201707041648366_InitialCreate.Designer.cs">
+      <DependentUpon>201707041648366_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707041654038_ImageInitial.cs" />
+    <Compile Include="Migrations\201707041654038_ImageInitial.Designer.cs">
+      <DependentUpon>201707041654038_ImageInitial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707041701516_ImageSecond.cs" />
+    <Compile Include="Migrations\201707041701516_ImageSecond.Designer.cs">
+      <DependentUpon>201707041701516_ImageSecond.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707041742132_ImageThird.cs" />
+    <Compile Include="Migrations\201707041742132_ImageThird.Designer.cs">
+      <DependentUpon>201707041742132_ImageThird.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707051736484_Album1.0.0.cs" />
+    <Compile Include="Migrations\201707051736484_Album1.0.0.Designer.cs">
+      <DependentUpon>201707051736484_Album1.0.0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707051814390_ALbumInitial.cs" />
+    <Compile Include="Migrations\201707051814390_ALbumInitial.Designer.cs">
+      <DependentUpon>201707051814390_ALbumInitial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707052047157_AlbumMigration1.0.2.cs" />
+    <Compile Include="Migrations\201707052047157_AlbumMigration1.0.2.Designer.cs">
+      <DependentUpon>201707052047157_AlbumMigration1.0.2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707052148040_AlbumImageViewModel.cs" />
+    <Compile Include="Migrations\201707052148040_AlbumImageViewModel.Designer.cs">
+      <DependentUpon>201707052148040_AlbumImageViewModel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707060049402_ImageChangeRequiredFields.cs" />
+    <Compile Include="Migrations\201707060049402_ImageChangeRequiredFields.Designer.cs">
+      <DependentUpon>201707060049402_ImageChangeRequiredFields.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\Album.cs" />
     <Compile Include="Models\IdentityModels.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\ImageViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -207,6 +249,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ImageUploads\Germany-Cover-Photo.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
@@ -234,21 +277,14 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\About.cshtml" />
     <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Account\_ExternalLoginsListPartial.cshtml" />
-    <Content Include="Views\Account\ConfirmEmail.cshtml" />
-    <Content Include="Views\Account\ExternalLoginConfirmation.cshtml" />
-    <Content Include="Views\Account\ExternalLoginFailure.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
     <Content Include="Views\Account\Login.cshtml" />
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Account\ResetPassword.cshtml" />
     <Content Include="Views\Account\ResetPasswordConfirmation.cshtml" />
-    <Content Include="Views\Account\SendCode.cshtml" />
-    <Content Include="Views\Account\VerifyCode.cshtml" />
     <Content Include="Views\Manage\AddPhoneNumber.cshtml" />
     <Content Include="Views\Manage\ChangePassword.cshtml" />
     <Content Include="Views\Manage\Index.cshtml" />
@@ -257,6 +293,15 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
+    <Content Include="Views\Images\Create.cshtml" />
+    <Content Include="Views\Images\Delete.cshtml" />
+    <Content Include="Views\Images\Edit.cshtml" />
+    <Content Include="Views\Images\Albums.cshtml" />
+    <Content Include="Views\Albums\Create.cshtml" />
+    <Content Include="Views\Albums\Delete.cshtml" />
+    <Content Include="Views\Albums\Details.cshtml" />
+    <Content Include="Views\Albums\Edit.cshtml" />
+    <Content Include="Views\Albums\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -275,6 +320,35 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201707041648366_InitialCreate.resx">
+      <DependentUpon>201707041648366_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707041654038_ImageInitial.resx">
+      <DependentUpon>201707041654038_ImageInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707041701516_ImageSecond.resx">
+      <DependentUpon>201707041701516_ImageSecond.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707041742132_ImageThird.resx">
+      <DependentUpon>201707041742132_ImageThird.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707051736484_Album1.0.0.resx">
+      <DependentUpon>201707051736484_Album1.0.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707051814390_ALbumInitial.resx">
+      <DependentUpon>201707051814390_ALbumInitial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707052047157_AlbumMigration1.0.2.resx">
+      <DependentUpon>201707052047157_AlbumMigration1.0.2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707052148040_AlbumImageViewModel.resx">
+      <DependentUpon>201707052148040_AlbumImageViewModel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707060049402_ImageChangeRequiredFields.resx">
+      <DependentUpon>201707060049402_ImageChangeRequiredFields.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

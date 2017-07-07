@@ -22,12 +22,13 @@
 
     <br /><br />
 
-    <h1>Photo Gallery</h1>
+         <h1 style="display:inline-block">@ViewBag.albumName</h1>
+         <input type="button" class="btn btn-success" style ="float:right; margin-top:35px;" value="View Albums" onclick="window.location = '../Albums/Index';" />
+
     @{
         if(User.Identity.IsAuthenticated)
         {
-            <input type="button" class="btn btn-success" value="Add Image" onclick="window.location = 'Create';" />
-            <input type="button" class="btn btn-success" value="View Albums" onclick="window.location = '../Albums/Index';" />
+            <input type="button" style="float:right; margin-top:35px; margin-right:15px;"class="btn btn-success" value="Add Image" onclick="location.href='@Url.Action("Create", "Images", new{albumId = ViewBag.albumID , albumName = ViewBag.albumName})'" />
         }
     }
 
@@ -43,18 +44,21 @@
 
         foreach (var i in Model)
         {
-            img_Id = i.Id;
-            img_path = i.ImageUrl;
-            if (img_path != null)
+            if (i.AlbumId == ViewBag.albumId)
             {
-                img_path = img_path.Remove(0, 2);
+                img_Id = i.Id;
+                img_path = i.ImageUrl;
+                if (img_path != null)
+                {
+                    img_path = img_path.Remove(0, 2);
 
-                urlq = @Request.ApplicationPath + img_path;
-                q = "<img src=\"" + urlq + "\" alt=\"TEST\"/>";
+                    urlq = @Request.ApplicationPath + img_path;
+                    q = "<img src=\"" + urlq + "\" alt=\"TEST\"/>";
 
-                img_urls[count] = q;
-                img_Ids[count] = img_Id;
-                count++;
+                    img_urls[count] = q;
+                    img_Ids[count] = img_Id;
+                    count++;
+                }
             }
         }
     }
@@ -66,8 +70,8 @@
             <hr />
             if (User.Identity.IsAuthenticated)
             {
-                <input type="button" class="btn btn-success" style="float:right; margin-left:25px;" value="Edit" onclick="location.href='@Url.Action("Edit", "Images")?id=' + @img_Ids[i]" />
-                <input type="button" class="btn btn-danger" style="float:right" value="Delete" onclick="location.href='@Url.Action("Delete", "Images")?id=' + @img_Ids[i]" />
+                <input type="button" class="btn btn-success" style="float:right; margin-left:25px;" value="Edit" onclick="location.href='@Url.Action("Edit", "Images", new{id = img_Ids[i] , albumId = ViewBag.albumID , albumName = ViewBag.albumName})'" />
+                <input type="button" class="btn btn-danger" style="float:right" value="Delete" onclick="location.href='@Url.Action("Delete", "Images", new{id = img_Ids[i] , albumId = ViewBag.albumID , albumName = ViewBag.albumName})'" />
             }
             @(new HtmlString(img_urls[i]))
         }

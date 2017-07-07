@@ -21,14 +21,19 @@ namespace ReedHampton.Controllers
         }
         // GET: Images
         [AllowAnonymous]
-        public async System.Threading.Tasks.Task<ActionResult> Albums()
+        public async System.Threading.Tasks.Task<ActionResult> Albums(int albumID , string albumName)
         {
+            ViewBag.albumId = albumID;
+            ViewBag.albumName = albumName;
             return View(await db.Images.ToListAsync());
         }
 
         // GET: Images/Create
-        public ActionResult Create()
+        public ActionResult Create(int albumID, string albumName)
         {
+            ViewBag.albumId = albumID;
+            ViewBag.albumName = albumName;
+
             var albums = GetAllAlbums();
 
             var model = new ImageViewModel();
@@ -43,7 +48,7 @@ namespace ReedHampton.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create(ImageViewModel model)
+        public ActionResult Create(ImageViewModel model , int albumID, string albumName)
         {
             var albums = GetAllAlbums();
 
@@ -90,14 +95,15 @@ namespace ReedHampton.Controllers
 
                 db.Images.Add(image);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+
+                return Redirect(Url.Action("Albums", "Images", new { albumId = albumID, albumName = albumName }));
             }
 
             return View(model);
         }
 
         // GET: Images/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id , int albumID, string albumName)
         {
             if (id == null)
             {
@@ -108,6 +114,9 @@ namespace ReedHampton.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.albumId = albumID;
+            ViewBag.albumName = albumName;
+
             return View(image);
         }
 
@@ -116,19 +125,19 @@ namespace ReedHampton.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,AlbumId,Title,AltText,Caption,ImageUrl,CreatedDate")] Image image)
+        public ActionResult Edit([Bind(Include = "Id,AlbumId,Title,AltText,Caption,ImageUrl,CreatedDate")] Image image , int albumID, string albumName)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(image).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return Redirect(Url.Action("Albums", "Images", new { albumId = albumID, albumName = albumName }));
             }
-            return View(image);
+            return Redirect(Url.Action("Albums", "Images", new { albumId = albumID, albumName = albumName }));
         }
 
         // GET: Images/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int albumID, string albumName)
         {
             if (id == null)
             {
@@ -139,18 +148,22 @@ namespace ReedHampton.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.albumId = albumID;
+            ViewBag.albumName = albumName;
+
             return View(image);
         }
 
         // POST: Images/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int albumID, string albumName)
         {
             Image image = db.Images.Find(id);
             db.Images.Remove(image);
             db.SaveChanges();
-            return RedirectToAction("Index");
+
+            return Redirect(Url.Action("Albums", "Images", new { albumId = albumID, albumName = albumName }));
         }
 
         protected override void Dispose(bool disposing)

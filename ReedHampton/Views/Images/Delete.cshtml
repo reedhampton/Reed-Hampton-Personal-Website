@@ -66,12 +66,13 @@
     </dl>
     <hr />
 
-    @using (Html.BeginForm()) {
+    <form action="" method="post" enctype="multipart/form-data">
         @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
 
         <div class="form-actions no-color">
-            <input type="submit" class="btn btn-danger" value="Delete" />
-            <input type="button" class="btn btn-success" value="Back to List" onclick="window.location = '../../Images/Albums';" />
+            <input type="submit" class="btn btn-danger" value="Delete" data-form-method="post" formaction="@Url.Action("Delete" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})" />
+            <input type="button" class="btn btn-success" value="Back to @ViewBag.albumName" onclick="location.href='@Url.Action("Albums" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})'" />
         </div>
-    }
+    </form>
 </div>

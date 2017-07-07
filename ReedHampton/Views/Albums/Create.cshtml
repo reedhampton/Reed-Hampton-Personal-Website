@@ -4,6 +4,7 @@
     ViewBag.Title = "Create";
 }
 
+<br />
 <h2>Add New Album</h2>
 
 <hr />
@@ -43,13 +44,9 @@
 
     <hr />
 
-    <button type="submit" class="btn btn-success">Create</button>
-    <input type="button" class="btn btn-success" value="Back to List" onclick="window.location = '../../Images/Albums';" />
+    <button type="submit" class="btn btn-success">Add Album</button>
+    <input type="button" class="btn btn-success" value="Back to Albums" onclick="window.location = '../../Albums/AlbumGallery';" />
 </form>
-
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")

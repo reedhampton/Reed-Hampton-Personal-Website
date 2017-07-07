@@ -14,6 +14,12 @@ namespace ReedHampton
                 url: "{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
             );
+
+            routes.MapRoute(
+                name: "AlbumController",
+                url: "{controller}/{action}/{albumId}/{albumName}",
+                defaults: new { controller = "Images", action = "Albums", albumId = UrlParameter.Optional , albumName = UrlParameter.Optional  }
+            );
         }
     }
 }

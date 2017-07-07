@@ -2,10 +2,6 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="img">
-    <!--<img src="~/Images/Germany-Cover-Photo.jpg" />-->
-</div>
-
 <div class="jumbotron" style="background-image: url(../../ImageUploads/Germany-Cover-Photo.jpg)">
     <h1>Welcome!</h1>
     <p class="lead">Developer, Tech Enthusiast, Avid Reader/Novelist, Amateur Photographer...</p>
@@ -50,26 +46,3 @@
 </div>
 <!--SEPERATING LINE-->
 <hr />
-
-<!--TEMPORARY ADMIN LINKS-->
-<br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br /><br />
-<h2 style="text-align:left; font-size:40px; font-family:'Bodoni MT'"> Admin Links... </h2>
-<div>
-    <h3 style="text-align:left; padding-left:50px; font-size:24px; font-family:'Bodoni MT'"> Photo Gallery</h3>
-    <div style="text-align:center">
-        <p> @Html.ActionLink("Add Album", "Index", "Albums") </p>
-        <p> @Html.ActionLink("Edit Album", "Contact", "Home") </p>
-        <p> @Html.ActionLink("Remove Album", "Contact", "Home") </p>
-
-        <p> @Html.ActionLink("Add Images", "Create", "Images") </p>
-        <p> @Html.ActionLink("View Images", "Index", "Images") </p>
-
-    </div>
-
-    <h3 style="text-align:left; padding-left:50px; font-size:24px; font-family:'Bodoni MT'"> Book Suggestions</h3>
-    <div style="text-align:center">
-        <p> @Html.ActionLink("Add Book", "Contact", "Home") </p>
-        <p> @Html.ActionLink("Edit Book", "Contact", "Home") </p>
-        <p> @Html.ActionLink("Remove Book", "Contact", "Home") </p>
-    </div>
-</div>

@@ -16,9 +16,16 @@ namespace ReedHampton.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Albums
+        //INDEX REDIRECT
         [AllowAnonymous]
         public ActionResult Index()
+        {
+            return RedirectToAction("AlbumGallery");
+        }
+
+        // GET: Albums
+        [AllowAnonymous]
+        public ActionResult AlbumGallery()
         {
             return View(db.Albums.ToList());
         }
@@ -119,7 +126,7 @@ namespace ReedHampton.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Name,Description,IsPublic,CreatedDate")] Album album)
+        public ActionResult Edit([Bind(Include = "Id,Name,Description,IsPublic,CreatedDate,AlbumThumbnailUrl")] Album album)
         {
             if (ModelState.IsValid)
             {

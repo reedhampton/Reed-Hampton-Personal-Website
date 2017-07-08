@@ -38,7 +38,7 @@
                 thumbnailPath = thumbnailPath.Remove(0, 2);
                 finalPath = @Request.ApplicationPath + thumbnailPath;
 
-                start = "<div class=\"jumbotron\" style=\"background-image:url(../.." + finalPath + ")\">";
+                start = "<div class=\"jumbotron\" style=\"background-size:cover; background-image:url(../.." + finalPath + ")\">";
                 close = "</div>";
             }
 

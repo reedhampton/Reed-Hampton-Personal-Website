@@ -3,42 +3,194 @@
 @{
     ViewBag.Title = "Index";
 }
+<meta name="viewport" content="width=device-width, initial-scale=1">
 
 <html>
 <head>
+    
     <style>
-        img {
+        #caption {
+            margin: auto;
             display: block;
-            margin-left: 200px;
-            max-width: 1035px;
-            max-height: 428px;
+            width: 80%;
+            max-width: 700px;
+            text-align: center;
+            color: maroon;
+            padding: 10px 0;
+            height: 150px;
+        }
+        * {
+            box-sizing: border-box;
+        }
+
+        .row > .column {
+            padding: 0 8px;
+            padding-top: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        .column {
+            float: left;
+            width: 30%;
+        }
+
+        /* The Modal (background) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: white;
+        }
+
+        /* Modal Content */
+        .modal-content {
+            position: relative;
+            background-color: #fefefe;
+            margin: auto;
+            padding: 0;
+            width: 80%;
+            height:auto;
+            max-width: 850px;
+        }
+
+        /* The Close Button */
+        .close {
+            color: #660000;
+            position: absolute;
+            top: 100px;
+            right: 300px;
+            font-size: 48px;
+            font-weight: bold;
+            opacity:.9;
+        }
+
+            .close:hover,
+            .close:focus {
+                color: #660000;
+                text-decoration: none;
+                cursor: pointer;
+            }
+
+        .mySlides {
+            display: none;
+        }
+
+        .cursor {
+            cursor: pointer
+        }
+
+        /* Next & previous buttons */
+        .prev,
+        .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
             width: auto;
-            height: auto;
+            padding: 16px;
+            margin-top: -50px;
+            color: white;
+            font-weight: bold;
+            font-size: 20px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+            -webkit-user-select: none;
+        }
+
+        /* Position the "next button" to the right */
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
+
+            /* On hover, add a black background color with a little bit see-through */
+            .prev:hover,
+            .next:hover {
+                background-color: rgba(0, 0, 0, 0.8);
+            }
+
+        /* Number text (1/3 etc) */
+        .numbertext {
+            color: #f2f2f2;
+            font-size: 12px;
+            padding: 8px 12px;
+            position: absolute;
+            top: 0;
+        }
+
+        img {
+            margin-bottom: -4px;
+        }
+
+        .caption-container {
+            text-align: center;
+            background-color: white;
+            padding: 2px 16px;
+            color: maroon;
+        }
+
+        .demo {
+            opacity: 0.6;
+        }
+
+            .active,
+            .demo:hover {
+                opacity: 1;
+            }
+
+        img.hover-shadow {
+            transition: 0.3s
+        }
+
+        .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
         }
     </style>
 </head>
+
+<!-----------------------------------------------------------------------END OF STYLE------------------------------------------------------------------------>
 
 <body>
 
     <br /><br />
 
-         <h1 style="display:inline-block">@ViewBag.albumName</h1>
-         <input type="button" class="btn btn-success" style ="float:right; margin-top:35px;" value="View Albums" onclick="window.location = '../Albums/Index';" />
+    <h1 style="display:inline-block">@ViewBag.albumName</h1>
+    <input type="button" class="btn btn-success" style="float:right; margin-top:35px;" value="View Albums" onclick="window.location = '../Albums/Index';" />
 
     @{
-        if(User.Identity.IsAuthenticated)
+        if (User.Identity.IsAuthenticated)
         {
-            <input type="button" style="float:right; margin-top:35px; margin-right:15px;"class="btn btn-success" value="Add Image" onclick="location.href='@Url.Action("Create", "Images", new{albumId = ViewBag.albumID , albumName = ViewBag.albumName})'" />
+            <input type="button" style="float:right; margin-top:35px; margin-right:15px;" class="btn btn-success" value="Add Image" onclick="location.href='@Url.Action("Create", "Images", new{albumId = ViewBag.albumID , albumName = ViewBag.albumName})'" />
         }
     }
+
+    <hr />
+
+<!-------------------------------------------------------C# CREATE NEW HTML STRINGS------------------------------------------------------------------------------------------------->
 
     @{
         string img_path = "";
         int img_Id;
-        string urlq = "";
-        string q = "";
+        int img_number = 1;
+        string imagePath = "";
+        string thumbnailImage = "";
+        string expandedImage = "";
+        string imageCaption = "";
 
-        string[] img_urls = new string[100];
+        string[] thumbnailHTML = new string[100];
+        string[] expandedHTML = new string[100];
+        string[] captions = new string[100];
         int[] img_Ids = new int[100];
         int count = 0;
 
@@ -48,34 +200,109 @@
             {
                 img_Id = i.Id;
                 img_path = i.ImageUrl;
+                imageCaption = i.Caption;
+
                 if (img_path != null)
                 {
                     img_path = img_path.Remove(0, 2);
 
-                    urlq = @Request.ApplicationPath + img_path;
-                    q = "<img src=\"" + urlq + "\" alt=\"TEST\"/>";
+                    imagePath = @Request.ApplicationPath + img_path;
+                    thumbnailImage = "<div class=\"column\"><img src=\"" + imagePath + "\" style=\"width:300px; height:300px; object-fit:contain; overflow: hidden;\" onclick=\"openModal();currentSlide(" + img_number + ")\" class=\"hover-shadow cursor\")></div>";
+                    expandedImage = "<div class=\"mySlides\"><div class=\"numbertext\"></div><img alt =\"" + imageCaption + "\" src=\"" + imagePath + "\" style=\"width:100%;\"></div>";
 
-                    img_urls[count] = q;
+                    thumbnailHTML[count] = thumbnailImage;
+                    expandedHTML[count] = expandedImage;
+                    captions[count] = imageCaption;
                     img_Ids[count] = img_Id;
                     count++;
+                    img_number++;
                 }
             }
         }
     }
 
-    @for (int i = 0; i < 100; ++i)
-    {
-        if (img_urls[i] != null)
+<!-------------------------------------------------------THUMBNAILS------------------------------------------------------------------------------------------------->
+
+    <div class="row">
+        @for (int i = 0; i < count; ++i)
         {
-            <hr />
-            if (User.Identity.IsAuthenticated)
+            if (thumbnailHTML[i] != null)
             {
-                <input type="button" class="btn btn-success" style="float:right; margin-left:25px;" value="Edit" onclick="location.href='@Url.Action("Edit", "Images", new{id = img_Ids[i] , albumId = ViewBag.albumID , albumName = ViewBag.albumName})'" />
-                <input type="button" class="btn btn-danger" style="float:right" value="Delete" onclick="location.href='@Url.Action("Delete", "Images", new{id = img_Ids[i] , albumId = ViewBag.albumID , albumName = ViewBag.albumName})'" />
+                    @(new HtmlString(thumbnailHTML[i]))
+                if (User.Identity.IsAuthenticated)
+                { 
+                    <input type="button" class="btn btn-success" style="text-align:right;" value="Edit" onclick="location.href='@Url.Action("Edit", "Images", new{id = img_Ids[i] , albumId = ViewBag.albumID , albumName = ViewBag.albumName})'" />
+                    <input type="button" class="btn btn-danger" style="text-align:right;" value="Delete" onclick="location.href='@Url.Action("Delete", "Images", new{id = img_Ids[i] , albumId = ViewBag.albumID , albumName = ViewBag.albumName})'" />
+                }
             }
-            @(new HtmlString(img_urls[i]))
         }
-    }
+    </div>
+
+<!-------------------------------------------------------ZOOM IN EFFECTS------------------------------------------------------------------------------------------------->
+
+    <div id="myModal" class="modal">
+        <span class="close cursor" onclick="closeModal()">&times;</span>
+        <div class="modal-content">
+            @for (int i = 0; i < count; ++i)
+            {
+                if(expandedHTML[i] != null)
+                {
+                    @(new HtmlString(expandedHTML[i]));
+                }
+            }
+
+            <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+            <a class="next" onclick="plusSlides(1)">&#10095;</a>
+
+            
+        </div>
+    </div>
+
+<!-------------------------------------------------------JAVA SCRIPT------------------------------------------------------------------------------------------------->
+
+    <script>
+        function openModal() {
+            document.getElementById('myModal').style.display = "block";
+        }
+
+        function closeModal() {
+            document.getElementById('myModal').style.display = "none";
+        }
+
+        var slideIndex = 1;
+        showSlides(slideIndex);
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("demo");
+            var captionText = document.getElementById("caption");
+
+            if (n > slides.length) { slideIndex = 1 }
+            if (n < 1) { slideIndex = slides.length }
+            for (i = 0; i < slides.length; i++)
+            {
+                slides[i].style.display = "none";
+            }
+            for (i = 0; i < dots.length; i++)
+            {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex - 1].style.display = "block";
+            dots[slideIndex - 1].className += " active";
+            captionText.innerHTML = this.alt;
+        }
+    </script>
+
+<!-------------------------------------------------------END JAVA SCRIPT------------------------------------------------------------------------------------------------->
 
 </body>
 

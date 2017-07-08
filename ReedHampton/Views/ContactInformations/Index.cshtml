@@ -1,0 +1,106 @@
+﻿@model IEnumerable<ReedHampton.Models.ContactInformation>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .row {
+        text-align: center;
+        min-width: 412px;
+        width: 100%; /* it changes by screen size actually */
+        height: auto;
+    }
+
+    .row:after {
+        content: '';
+        display: inline-block;
+        width: 100%;
+    }
+
+    .col {
+        display: inline-block;
+    }
+</style>
+
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <input type="button" style="float:left; margin-top:35px; margin-right:15px;" class="btn btn-success" value="Add Contact Information" onclick="location.href='@Url.Action("Create", "ContactInformations")'" />
+    }
+}
+
+
+<h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:75px;"> Let's be... Amici... Tomodachi... Copains... <strng>Friends.</strng></h1>
+<h2 style="text-align:center; font-family:Garamond; font-size:32px; padding-top:30px; color:#660000;">Get in touch with me at any of these places</h2>
+
+<br /><br />
+
+@{
+    string facebookURL = "";
+    string linkedInURL = "";
+    string gitHubURL = "";
+
+    string facebookHTML = "";
+    string linkedInHTML = "";
+    string gitHubHTML = "";
+    string emailHTML = "";
+
+    string endLinkTag = "</a>";
+
+    foreach (var item in Model)
+    {
+        facebookURL = item.FacebookLink;
+        linkedInURL = item.LinkedInLink;
+        gitHubURL = item.GitHubLink;
+        emailHTML = "<a href=\"mailto:" + item.PrimaryEmail + "\" target=\"_top\">";
+
+        facebookHTML = "<a href=\"" + facebookURL + "\" target=\"_blank\">";
+        linkedInHTML = "<a href=\"" + linkedInURL + "\" target=\"_blank\">";
+        gitHubHTML = "<a href=\"" + gitHubURL + "\" target=\"_blank\">";
+
+        <div class="row" style="text-align:center;">
+
+            <!--FACEBOOK LINK AND IMAGE---------------------------------------------------------------------------->
+
+            <div class="col" style="padding-left:25px;">
+                @(new HtmlString(facebookHTML))
+                    <img src="~/StaticImages/Black_FaceBook_Logo.jpg" alt="Facebook" style="height:66px; width:66px;"/>
+                @(new HtmlString(endLinkTag))
+            </div>
+
+            <!--LINKEDIN LINK AND IMAGE---------------------------------------------------------------------------->
+
+            <div class="col" style="padding-left:25px;">
+                @(new HtmlString(linkedInHTML))
+                <img src="~/StaticImages/In-Black-66px-TM.png" alt="LinkedIn" />
+                @(new HtmlString(endLinkTag))
+            </div>
+
+            <!--GITHUB LINK AND IMAGE---------------------------------------------------------------------------->
+
+            <div class="col" style="padding-left:25px;">
+                @(new HtmlString(gitHubHTML))
+                <img src="~/StaticImages/GitHub-Mark-64px.png" alt="GitHub" />
+                @(new HtmlString(endLinkTag))
+            </div>
+
+            <!--EMAIL LINK AND IMAGE---------------------------------------------------------------------------->
+
+            <div class="col" style="padding-left:25px;">
+                @(new HtmlString(emailHTML))
+                <img src="~/StaticImages/email_64x64.png" alt="Email" />
+                @(new HtmlString(endLinkTag))
+            </div>
+
+            @if (User.Identity.IsAuthenticated)
+            {
+                <div style="padding-left:50px; padding-top:25px;">
+                    <input type="button" class="btn btn-success" style="" value="Edit" onclick="location.href='@Url.Action("Edit", "ContactInformations", new { id = item.id})'" />
+                    <input type="button" class="btn btn-danger" style="" value="Delete" onclick="location.href='@Url.Action("Delete", "ContactInformations", new { id = item.id})'" />
+                </div>
+            }
+
+        </div>
+    }
+}
+

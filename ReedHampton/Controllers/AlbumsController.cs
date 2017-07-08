@@ -30,21 +30,6 @@ namespace ReedHampton.Controllers
             return View(db.Albums.ToList());
         }
 
-        // GET: Albums/Details/5
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Album album = db.Albums.Find(id);
-            if (album == null)
-            {
-                return HttpNotFound();
-            }
-            return View(album);
-        }
-
         // GET: Albums/Create
         public ActionResult Create()
         {
@@ -158,6 +143,16 @@ namespace ReedHampton.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Album album = db.Albums.Find(id);
+
+            //Deletes all teh images that share that ALbums ID
+                foreach(Image image in db.Images)
+                {
+                    if(image.AlbumId == id)
+                    {
+                        db.Images.Remove(image);
+                    }
+                }
+            //Save changes to database
             db.Albums.Remove(album);
             db.SaveChanges();
             return RedirectToAction("Index");

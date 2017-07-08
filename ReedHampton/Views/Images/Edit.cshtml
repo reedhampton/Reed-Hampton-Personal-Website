@@ -6,7 +6,7 @@
 
 <br />
 
-<h2>Edit "@Html.ValueFor(model => model.Title)"</h2>
+<h2>Edit @Html.ValueFor(model => model.Title)</h2>
 
 @using (Html.BeginForm("AlbumGallery", "Albums"))
 {
@@ -77,11 +77,13 @@
 
             <br />
         </div>
+        </div>
 
+        <hr />
 
         <input type="submit" value="Update" class="btn btn-success" data-form-method = "post" formaction="@Url.Action("Edit" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})"/>
         <input type="button" class="btn btn-success" value="Back to @ViewBag.albumName" onclick="location.href='@Url.Action("Albums" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})'" />
-    </div>
+    
 }
 
 @section Scripts {

@@ -190,6 +190,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlbumsController.cs" />
+    <Compile Include="Controllers\ContactInformationsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -244,10 +245,15 @@
     <Compile Include="Migrations\201707060457513_AlbumThumbnailTwo.Designer.cs">
       <DependentUpon>201707060457513_AlbumThumbnailTwo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707082141168_ContactInformation1.0.0.cs" />
+    <Compile Include="Migrations\201707082141168_ContactInformation1.0.0.Designer.cs">
+      <DependentUpon>201707082141168_ContactInformation1.0.0.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\AlbumViewModel.cs" />
+    <Compile Include="Models\ContactInformation.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Image.cs" />
     <Compile Include="Models\ImageViewModel.cs" />
@@ -279,6 +285,11 @@
     <Content Include="Scripts\modernizr-2.6.2.js" />
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
+    <Content Include="StaticImages\Black_FaceBook_Logo.jpg" />
+    <Content Include="StaticImages\Clean_Cursive_Signature.gif" />
+    <Content Include="StaticImages\email_64x64.png" />
+    <Content Include="StaticImages\GitHub-Mark-64px.png" />
+    <Content Include="StaticImages\In-Black-66px-TM.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -290,7 +301,6 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
-    <Content Include="Views\Home\Contact.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Account\ForgotPassword.cshtml" />
     <Content Include="Views\Account\ForgotPasswordConfirmation.cshtml" />
@@ -312,9 +322,12 @@
     <Content Include="Views\Images\Albums.cshtml" />
     <Content Include="Views\Albums\Create.cshtml" />
     <Content Include="Views\Albums\Delete.cshtml" />
-    <Content Include="Views\Albums\Details.cshtml" />
     <Content Include="Views\Albums\Edit.cshtml" />
     <Content Include="Views\Albums\AlbumGallery.cshtml" />
+    <Content Include="Views\ContactInformations\Create.cshtml" />
+    <Content Include="Views\ContactInformations\Delete.cshtml" />
+    <Content Include="Views\ContactInformations\Edit.cshtml" />
+    <Content Include="Views\ContactInformations\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -370,6 +383,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707060457513_AlbumThumbnailTwo.resx">
       <DependentUpon>201707060457513_AlbumThumbnailTwo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707082141168_ContactInformation1.0.0.resx">
+      <DependentUpon>201707082141168_ContactInformation1.0.0.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

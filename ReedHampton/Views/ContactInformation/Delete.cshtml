@@ -4,13 +4,19 @@
     ViewBag.Title = "Delete";
 }
 
-<h2>Delete</h2>
+<style>
+    dl dd{
+        padding-bottom:25px;
+    }
+</style>
+<br />
 
-<h3>Are you sure you want to delete this?</h3>
+    <h2>Are you sure you want to delete @Html.ValueFor(model => model.ContactName)'s contact information?</h2>
+
+<hr />
+
 <div>
-    <h4>ContactInformation</h4>
-    <hr />
-    <dl class="dl-horizontal">
+    <dl class="dl-horizontal" style="padding-top:25px; padding-left:300px;">
         <dt>
             @Html.DisplayNameFor(model => model.ContactName)
         </dt>
@@ -61,12 +67,15 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    <hr />
+
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Delete @Html.ValueFor(model => model.ContactName)" class="btn btn-danger" />
+            <input type="button" class="btn btn-success" value="Back to Contact Information" onclick="window.location = '../../ContactInformation/Index';" />
         </div>
     }
 </div>

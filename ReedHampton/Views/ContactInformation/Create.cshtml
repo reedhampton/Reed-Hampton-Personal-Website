@@ -1,0 +1,67 @@
+﻿@model ReedHampton.Models.ContactInformation
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<br />
+
+    <h2>Add new Contact Information</h2>
+
+<hr />
+
+<form action="" method="post" enctype="multipart/form-data">
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true)
+
+    <div style="padding-top:50px; padding-left:300px;">
+        <div>
+            @Html.LabelFor(m => m.ContactName, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.ContactName, new { @class = "form-control" })
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.PrimaryEmail, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.PrimaryEmail, new { @class = "form-control" })
+        </div>
+
+        <br />
+
+        <div class="form-group">
+            @Html.LabelFor(m => m.SecondaryEmail, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.SecondaryEmail, new { @class = "form-control" })
+        </div>
+
+        <br />
+
+        <div>
+            @Html.LabelFor(m => m.GitHubLink, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.GitHubLink, new { @class = "form-control" })
+        </div>
+
+        <br />
+
+        <div>
+            @Html.LabelFor(m => m.LinkedInLink, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.LinkedInLink, new { @class = "form-control" })
+        </div>
+
+        <br />
+
+        <div>
+            @Html.LabelFor(m => m.FacebookLink, new { @class = "col-md-2 control-label" })
+            @Html.TextBoxFor(m => m.FacebookLink, new { @class = "form-control" })
+        </div>
+    </div>
+
+    <hr />
+
+    <button type="submit" class="btn btn-success">Add Contact Information</button>
+    <input type="button" class="btn btn-success" value="Back to Contact Information" onclick="window.location = '../../ContactInformation/Index';" />
+</form>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

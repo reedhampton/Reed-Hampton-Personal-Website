@@ -190,7 +190,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlbumsController.cs" />
-    <Compile Include="Controllers\ContactInformationsController.cs" />
+    <Compile Include="Controllers\ContactInformationController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -248,6 +248,10 @@
     <Compile Include="Migrations\201707082141168_ContactInformation1.0.0.cs" />
     <Compile Include="Migrations\201707082141168_ContactInformation1.0.0.Designer.cs">
       <DependentUpon>201707082141168_ContactInformation1.0.0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201707090129205_ContactInformation1.0.1.cs" />
+    <Compile Include="Migrations\201707090129205_ContactInformation1.0.1.Designer.cs">
+      <DependentUpon>201707090129205_ContactInformation1.0.1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -324,10 +328,10 @@
     <Content Include="Views\Albums\Delete.cshtml" />
     <Content Include="Views\Albums\Edit.cshtml" />
     <Content Include="Views\Albums\AlbumGallery.cshtml" />
-    <Content Include="Views\ContactInformations\Create.cshtml" />
-    <Content Include="Views\ContactInformations\Delete.cshtml" />
-    <Content Include="Views\ContactInformations\Edit.cshtml" />
-    <Content Include="Views\ContactInformations\Index.cshtml" />
+    <Content Include="Views\ContactInformation\Create.cshtml" />
+    <Content Include="Views\ContactInformation\Delete.cshtml" />
+    <Content Include="Views\ContactInformation\Edit.cshtml" />
+    <Content Include="Views\ContactInformation\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -386,6 +390,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707082141168_ContactInformation1.0.0.resx">
       <DependentUpon>201707082141168_ContactInformation1.0.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707090129205_ContactInformation1.0.1.resx">
+      <DependentUpon>201707090129205_ContactInformation1.0.1.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -11,51 +11,52 @@
     }
 </script>
 <br />
-<h2>Photo Albums</h2>
 
-@{
-    if (User.Identity.IsAuthenticated)
-    {
-        <input type="button" class="btn btn-success" value="Add Album" onclick="window.location = 'Create';" />
-    }
-}
+<h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px;">Photo Gallery</h1>
 
-<br />
-<br />
-@{
-    foreach (var album in Model)
-    {
-        if (album.IsPublic == true || User.Identity.IsAuthenticated)
+    @{
+        if (User.Identity.IsAuthenticated)
         {
-            string thumbnailPath = album.AlbumThumbnailUrl;
-            string finalPath = "";
+            <input type="button" class="btn btn-success" value="Add Album" onclick="window.location = 'Create';" />
+        }
+    }
 
-            string start = "";
-            string close = "";
-
-            if (thumbnailPath != null)
+    <br />
+    <br />
+    @{
+        foreach (var album in Model)
+        {
+            if (album.IsPublic == true || User.Identity.IsAuthenticated)
             {
-                thumbnailPath = thumbnailPath.Remove(0, 2);
-                finalPath = @Request.ApplicationPath + thumbnailPath;
+                string thumbnailPath = album.AlbumThumbnailUrl;
+                string finalPath = "";
 
-                start = "<div class=\"jumbotron\" style=\"background-size:cover; background-image:url(../.." + finalPath + ")\">";
-                close = "</div>";
-            }
+                string start = "";
+                string close = "";
 
-                    <a href="@Url.Action("Albums" , "Images" , new{albumId = album.Id , albumName = album.Name})" style="text-decoration:none;">
-                        @(new HtmlString(start))
-                            <h1>@album.Name</h1>
-                            <p class="lead">@album.Description</p>
-                        @(new HtmlString(close))
-                    </a>
+                if (thumbnailPath != null)
+                {
+                    thumbnailPath = thumbnailPath.Remove(0, 2);
+                    finalPath = @Request.ApplicationPath + thumbnailPath;
 
-                        if (User.Identity.IsAuthenticated)
-                        {
-            <input type="button" class="btn btn-success" value="Edit" onclick="location.href='@Url.Action("Edit", "Albums")?id=' + @album.Id" />
-            <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", "Albums")?id=' + @album.Id" />
-            }
+                    start = "<div class=\"jumbotron\" style=\"background-size:cover; background-image:url(../.." + finalPath + ")\">";
+                    close = "</div>";
+                }
 
-                     <br /><br /><br />
+                <a href="@Url.Action("Albums" , "Images" , new{albumId = album.Id , albumName = album.Name})" style="text-decoration:none;">
+                    @(new HtmlString(start))
+                    <h1>@album.Name</h1>
+                    <p class="lead">@album.Description</p>
+                    @(new HtmlString(close))
+                </a>
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    <input type="button" class="btn btn-success" value="Edit" onclick="location.href='@Url.Action("Edit", "Albums")?id=' + @album.Id" />
+                    <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", "Albums")?id=' + @album.Id" />
+                }
+
+                <br /><br /><br />
             }
         }
     }

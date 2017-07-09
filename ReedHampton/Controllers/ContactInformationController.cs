@@ -11,24 +11,24 @@ using ReedHampton.Models;
 namespace ReedHampton.Controllers
 {
     [Authorize]
-    public class ContactInformationsController : Controller
+    public class ContactInformationController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: ContactInformations
+        // GET: ContactInformation
         [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.ContactInformations.ToList());
         }
 
-        // GET: ContactInformations/Create
+        // GET: ContactInformation/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: ContactInformations/Create
+        // POST: ContactInformation/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -45,7 +45,7 @@ namespace ReedHampton.Controllers
             return View(contactInformation);
         }
 
-        // GET: ContactInformations/Edit/5
+        // GET: ContactInformation/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -60,7 +60,7 @@ namespace ReedHampton.Controllers
             return View(contactInformation);
         }
 
-        // POST: ContactInformations/Edit/5
+        // POST: ContactInformation/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -76,7 +76,7 @@ namespace ReedHampton.Controllers
             return View(contactInformation);
         }
 
-        // GET: ContactInformations/Delete/5
+        // GET: ContactInformation/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -91,7 +91,7 @@ namespace ReedHampton.Controllers
             return View(contactInformation);
         }
 
-        // POST: ContactInformations/Delete/5
+        // POST: ContactInformation/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -1,0 +1,116 @@
+﻿@model ReedHampton.Models.DevelopmentProject
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<head>
+    <style>
+        img {
+            display: inline;
+            max-width: 690px;
+            max-height: 285px;
+            width: auto;
+            height: auto;
+        }
+    </style>
+</head>
+
+<br />
+
+<h2>Are you sure you want to delete @Html.ValueFor(model => model.ShortName)?"</h2>
+
+<div>
+
+    <hr />
+
+    @{
+        string img_path = Model.ProjectImageUrl;
+        string urlq = "";
+        string q = "";
+
+        if (img_path != null)
+        {
+            img_path = img_path.Remove(0, 2);
+
+            urlq = @Request.ApplicationPath + img_path;
+            q = "<img src=\"" + urlq + "\" alt=\"TEST\"/>";
+        }
+    }
+
+    @( new HtmlString(q))
+
+    <dl class="dl-horizontal" style="float:right; padding-top:85px; padding-right:0px;">
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ShortDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ShortDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LongName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LongDescription)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LongDescription)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.SkillsNeeded)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SkillsNeeded)
+        </dd>
+
+    </dl>
+
+    <hr />
+
+    <form action="" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div class="form-actions no-color">
+            <input type="submit" class="btn btn-danger" value="Delete" data-form-method="post" formaction="@Url.Action("Delete" , "DevelopmentProjects")" />
+            <input type="button" class="btn btn-success" value="Back to Portfolio" onclick="location.href='@Url.Action("Portfolio" , "DevelopmentProjects")'" />
+        </div>
+    </form>
+
+</div>
+

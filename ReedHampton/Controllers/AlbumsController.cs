@@ -72,7 +72,7 @@ namespace ReedHampton.Controllers
 
                 if (model.AlbumThumbnailUpload != null && model.AlbumThumbnailUpload.ContentLength > 0)
                 {
-                    var uploadDir = "~/ImageUploads/AlbumThumbnailUploads";
+                    var uploadDir = "~/ImageUploads/DevelopmentThumbnailUploads";
                     var imagePath = Path.Combine(Server.MapPath(uploadDir), model.AlbumThumbnailUpload.FileName);
                     var imageUrl = Path.Combine(uploadDir, model.AlbumThumbnailUpload.FileName);
 
@@ -144,7 +144,7 @@ namespace ReedHampton.Controllers
         {
             Album album = db.Albums.Find(id);
 
-            //Deletes all teh images that share that ALbums ID
+            //Deletes all the images that share that ALbums ID
                 foreach(Image image in db.Images)
                 {
                     if(image.AlbumId == id)

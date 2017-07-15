@@ -1,0 +1,140 @@
+﻿@model IEnumerable<ReedHampton.Models.DevelopmentProject>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+    <style>
+        #image_box {
+            overflow: hidden;
+            list-style: none;
+        }
+
+        #image_box li {
+            float: left;
+            text-align: center;
+            margin: 0.4em;
+            padding-left:50px;
+        }
+
+        #image_box img {
+            display: block;
+        }
+
+        * {
+            box-sizing: border-box;
+        }
+
+        .row > .column {
+            padding: 0 8px;
+            padding-top: 20px;
+        }
+
+        .row:after {
+            content: "";
+            display: table;
+            clear: both;
+        }
+
+        img {
+            margin-bottom: -4px;
+        }
+
+        .demo {
+            opacity: 0.6;
+        }
+
+            .active,
+            .demo:hover {
+                opacity: 1;
+            }
+
+        img.hover-shadow {
+            transition: 0.3s
+        }
+
+        .hover-shadow:hover {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
+        }
+    </style>
+
+<h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px;">Project Portfolio</h1>
+
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <input type="button" class="btn btn-success" value="Add Project" onclick="window.location = 'Create';" />
+    }
+}
+
+<br />
+<br />
+
+<!-------------------------------------------------------C# CREATE NEW HTML STRINGS------------------------------------------------------------------------------------------------->
+
+@{
+    string img_path = "";
+    int project_id;
+    string project_name = "";
+    string project_shortDescription = "";
+
+    string imagePath = "";
+    string htmlImageText = "";
+
+    int[] project_ids = new int[100];
+    string[] project_names = new string[100];
+    string[] project_shortDescriptions = new string[100];
+    string[] ImageBoxHTML = new string[100];
+    int count = 0;
+
+    foreach (var i in Model)
+    {
+        project_id = i.id;
+        project_name = i.ShortName;
+        project_shortDescription = i.ShortDescription;
+        img_path = i.ProjectImageUrl;
+
+        if (img_path != null)
+        {
+            img_path = img_path.Remove(0, 2);
+
+            imagePath = @Request.ApplicationPath + img_path;
+            htmlImageText = "<img src=\"" + imagePath + "\" style=\"width:300px; height:300px; object-fit:cover; overflow: hidden;\" class=\"hover-shadow cursor\")>";
+            project_name = "<h2 style=\"text-align:center; font-family:Garamond;\">" + project_name + "</h2>";
+            project_shortDescription = "<p style=\"text-align:center; font-family:Garamond; font-size:18px; color: #660000;\">" + project_shortDescription + "</p>";
+
+            project_ids[count] = project_id;
+            project_names[count] = project_name;
+            project_shortDescriptions[count] = project_shortDescription;
+            ImageBoxHTML[count] = htmlImageText;
+
+            count++;
+        }
+    }
+}
+
+<!-------------------------------------------------------THUMBNAILS------------------------------------------------------------------------------------------------->
+
+<div class="row">
+
+    <ul id="image_box">
+
+        @for (int i = 0; i < count; ++i)
+        {
+            if (ImageBoxHTML[i] != null)
+            {
+                <li>@(new HtmlString(ImageBoxHTML[i])) @(new HtmlString(project_names[i]))  @(new HtmlString(project_shortDescriptions[i])) </li>
+
+                if (User.Identity.IsAuthenticated)
+                {
+                    <li>
+                        <input type="button" class="btn btn-success" style="" value="Edit" onclick="location.href='@Url.Action("Edit", "DevelopmentProjects", new { id = project_ids[i]} )'" />
+                        <input type="button" class="btn btn-danger" style="" value="Delete" onclick="location.href='@Url.Action("Delete", "DevelopmentProjects", new { id = project_ids[i] })'" />
+                    </li>
+                }
+            }
+        }
+
+    </ul>
+
+</div>

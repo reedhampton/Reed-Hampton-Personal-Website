@@ -35,5 +35,7 @@ namespace ReedHampton.Models
         public System.Data.Entity.DbSet<ReedHampton.Models.Album> Albums { get; set; }
 
         public System.Data.Entity.DbSet<ReedHampton.Models.ContactInformation> ContactInformations { get; set; }
+
+        public System.Data.Entity.DbSet<ReedHampton.Models.DevelopmentProject> DevelopmentProjects { get; set; }
     }
 }

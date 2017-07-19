@@ -31,6 +31,17 @@
         -webkit-filter: blur(0);
     }
 
+    .centered {
+        text-align: center;
+        font-size: 0;
+    }
+
+        .centered > div {
+            float: none;
+            display: inline-block;
+            text-align: left;
+            font-size: 13px;
+        }
 </style>
 
 
@@ -46,36 +57,35 @@
 
 <br />
 
-<div class="row">
+    <div class="row centered">
 
-    @{ 
-        string temp_url = "";
+        @{ 
+            string temp_url = "";
 
-        foreach (var item in Model)
-        {
-            temp_url = item.FileURL;
-            temp_url = temp_url.Remove(0, 2);
+            foreach (var item in Model)
+            {
+                temp_url = item.FileURL;
+                temp_url = temp_url.Remove(0, 2);
 
-                <div class="column" id="hoverBox">
+                    <div class="column" id="hoverBox">
 
-                    <h1 style="text-align:center; font-family:Garamond; font-size:32px; padding-bottom:25px;">@item.Title</h1>
+                        <a href="../@temp_url" target="_blank" style="text-decoration:none;">
+                            <h1 style="text-align:center; font-family:Garamond; font-size:32px; padding-bottom:25px;">@item.Title</h1>
 
-                    <a href="../@temp_url" target="_blank">
-                        <img style="margin-left:auto; margin-right:auto; display:block;" src="~/StaticImages/Document-64.png" />
-                    </a>
+                            <img style="margin-left:auto; margin-right:auto; display:block;" src="~/StaticImages/Document-64.png" />
+                        </a>
 
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <div style="text-align:center; padding-top:20px;">
-                            <input type="button" class="btn btn-success" style="margin-left:auto; margin-right:auto;" value="Edit" onclick="location.href='@Url.Action("Edit", "ProfessionalDocuments", new { id = item.Id, })'" />
-                            <input type="button" class="btn btn-danger"  value="Delete" onclick="location.href='@Url.Action("Delete", "ProfessionalDocuments", new { id = item.Id})'" />
-                        </div>
-                    }
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div style="text-align:center; padding-top:20px;">
+                                <input type="button" class="btn btn-success" style="margin-left:auto; margin-right:auto;" value="Edit" onclick="location.href='@Url.Action("Edit", "ProfessionalDocuments", new { id = item.Id, })'" />
+                                <input type="button" class="btn btn-danger"  value="Delete" onclick="location.href='@Url.Action("Delete", "ProfessionalDocuments", new { id = item.Id})'" />
+                            </div>
+                        }
 
-                </div>
+                    </div>
 
 
+                }
             }
-        }
-</div>
-
+    </div>

@@ -1,0 +1,81 @@
+﻿@model IEnumerable<ReedHampton.Models.ProfessionalDocuments>
+
+@{
+    ViewBag.Title = "DocumentPortfolio";
+}
+
+<style>
+    .row > .column {
+        padding: 0 8px;
+        padding-top: 20px;
+        padding-bottom: 80px;
+    }
+
+    .row:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+
+    .column {
+        float: left;
+        width: 25%;
+    }
+
+    #hoverBox:hover h1 {
+        color:#660000;
+        -webkit-transform: scale(1.08);
+        -ms-transform: scale(1.08);
+        transform: scale(1.08);
+        -webkit-transition: transform .3s ease-in-out;
+        -webkit-filter: blur(0);
+    }
+
+</style>
+
+
+<h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px;">Document Portfolio</h1>
+
+
+@{
+    if (User.Identity.IsAuthenticated)
+    {
+        <input type="button" class="btn btn-success" value="Add Document" onclick="window.location = 'Create';" />
+    }
+}
+
+<br />
+
+<div class="row">
+
+    @{ 
+        string temp_url = "";
+
+        foreach (var item in Model)
+        {
+            temp_url = item.FileURL;
+            temp_url = temp_url.Remove(0, 2);
+
+                <div class="column" id="hoverBox">
+
+                    <h1 style="text-align:center; font-family:Garamond; font-size:32px; padding-bottom:25px;">@item.Title</h1>
+
+                    <a href="../@temp_url" target="_blank">
+                        <img style="margin-left:auto; margin-right:auto; display:block;" src="~/StaticImages/Document-64.png" />
+                    </a>
+
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div style="text-align:center; padding-top:20px;">
+                            <input type="button" class="btn btn-success" style="margin-left:auto; margin-right:auto;" value="Edit" onclick="location.href='@Url.Action("Edit", "ProfessionalDocuments", new { id = item.Id, })'" />
+                            <input type="button" class="btn btn-danger"  value="Delete" onclick="location.href='@Url.Action("Delete", "ProfessionalDocuments", new { id = item.Id})'" />
+                        </div>
+                    }
+
+                </div>
+
+
+            }
+        }
+</div>
+

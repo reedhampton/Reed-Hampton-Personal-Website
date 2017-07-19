@@ -132,13 +132,19 @@
                 opacity: 1;
             }
 
-        img.hover-shadow {
-            transition: 0.3s
-        }
+        .color img{
+            filter: grayscale(88%);
+            -webkit-filter: grayscale(88%);
+            -webkit-transition: all .7s ease;
+            }
 
-        .hover-shadow:hover {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-        }
+        .color img:hover{
+            filter: grayscale(0%);
+            filter: gray;
+            -webkit-filter: grayscale(0%);
+            filter: none;
+            transition: 1s ease;
+            }
     </style>
 </head>
 
@@ -149,7 +155,7 @@
     <br /><br />
 
     <h1 style="display:inline-block">@ViewBag.albumName</h1>
-    <input type="button" class="btn btn-success" style="float:right; margin-top:35px;" value="View Albums" onclick="window.location = '../Albums/Index';" />
+    <input type="button" class="btn" style="float:right; margin-top:35px; background-color:#660000; color:white;" value="View Albums" onclick="window.location = '../Albums/Index';" />
 
     @{
         if (User.Identity.IsAuthenticated)
@@ -191,7 +197,7 @@
                     img_path = img_path.Remove(0, 2);
 
                     imagePath = @Request.ApplicationPath + img_path;
-                    thumbnailImage = "<div class=\"column\"><img src=\"" + imagePath + "\" style=\"width:300px; height:300px; object-fit:cover; overflow: hidden;\" onclick=\"openModal();currentSlide(" + img_number + ")\" class=\"hover-shadow cursor\")></div>";
+                    thumbnailImage = "<div class=\"column color\"><img src=\"" + imagePath + "\" style=\"width:300px; height:300px; object-fit:cover; overflow: hidden;\" onclick=\"openModal();currentSlide(" + img_number + ")\" class=\"hover-shadow cursor\")></div>";
                     expandedImage = "<div class=\"mySlides\"><img src=\"" + imagePath + "\" style=\"width:100%;\"><p class =\"caption-container\">" + imageCaption + "</p></div>";
 
                     thumbnailHTML[count] = thumbnailImage;
@@ -217,7 +223,7 @@
                     if (User.Identity.IsAuthenticated)
                     {
                         <div class="row" style="margin-top:140px;">
-                            <input type="button" class="btn btn-success" style="" value="Edit" onclick="location.href='@Url.Action("Edit", "Images", new { id = img_Ids[i], albumId = ViewBag.albumID, albumName = ViewBag.albumName })'" />
+                            <input type="button" class="btn" style="background-color:#660000; color:white;" value="Edit" onclick="location.href='@Url.Action("Edit", "Images", new { id = img_Ids[i], albumId = ViewBag.albumID, albumName = ViewBag.albumName })'" />
                             <input type="button" class="btn btn-danger" style="" value="Delete" onclick="location.href='@Url.Action("Delete", "Images", new { id = img_Ids[i], albumId = ViewBag.albumID, albumName = ViewBag.albumName })'" />
                         </div>
                     }

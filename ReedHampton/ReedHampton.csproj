@@ -188,6 +188,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AboutMeController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\AlbumsController.cs" />
     <Compile Include="Controllers\ContactInformationController.cs" />
@@ -267,7 +268,13 @@
     <Compile Include="Migrations\201707162259121_ProfessionalDocuments1.0.1.Designer.cs">
       <DependentUpon>201707162259121_ProfessionalDocuments1.0.1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707232240268_FlipBoard1.0.0.cs" />
+    <Compile Include="Migrations\201707232240268_FlipBoard1.0.0.Designer.cs">
+      <DependentUpon>201707232240268_FlipBoard1.0.0.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\AboutMe.cs" />
+    <Compile Include="Models\AboutMeViewModel.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Album.cs" />
     <Compile Include="Models\AlbumViewModel.cs" />
@@ -359,6 +366,10 @@
     <Content Include="Views\ProfessionalDocuments\Delete.cshtml" />
     <Content Include="Views\ProfessionalDocuments\Edit.cshtml" />
     <Content Include="Views\ProfessionalDocuments\DocumentPortfolio.cshtml" />
+    <Content Include="Views\AboutMe\Create.cshtml" />
+    <Content Include="Views\AboutMe\Delete.cshtml" />
+    <Content Include="Views\AboutMe\Edit.cshtml" />
+    <Content Include="Views\AboutMe\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -429,6 +440,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707162259121_ProfessionalDocuments1.0.1.resx">
       <DependentUpon>201707162259121_ProfessionalDocuments1.0.1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707232240268_FlipBoard1.0.0.resx">
+      <DependentUpon>201707232240268_FlipBoard1.0.0.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

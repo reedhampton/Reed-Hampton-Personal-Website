@@ -23,7 +23,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                @Html.ActionLink("Reed Hampton", "Index", "AboutMe", new { area = "" }, new { @class = "navbar-brand" })
+                @Html.ActionLink("Reed Hampton", "Home", "AboutMe", new { area = "" }, new { @class = "navbar-brand" })
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
@@ -42,11 +42,11 @@
             <p>&copy; @DateTime.Now.Year - Reed Hampton</p>
             @if (!User.Identity.IsAuthenticated)
             {
-                <p>@Html.ActionLink("Admin", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</p>
+                <p>@Html.ActionLink("Admin", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" , style = "color:#660000;" })</p>
             }
             @if (User.Identity.IsAuthenticated)
             {
-                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm" }))
+                using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", style = "color:#660000;" }))
                 {
                     @Html.AntiForgeryToken()
                     <a href="javascript:document.getElementById('logoutForm').submit()">Log off</a>

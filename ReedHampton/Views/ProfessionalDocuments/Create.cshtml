@@ -4,46 +4,60 @@
     ViewBag.Title = "Create";
 }
 
-<br />
+<style>
+    body {
+        background-color: #c0bfb9;
+    }
+
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+</style>
+
+<body>
+
+    <br />
 
     <h2>Add New Document</h2>
 
-<hr />
-
-
-<form action="" method="post" enctype="multipart/form-data">
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <div style="padding-top:50px; padding-left:300px;">
-
-        <div  class="form-group">
-            @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div class="form-group-lg">
-            @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div>
-            @Html.LabelFor(m => m.FileUpload, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.FileUpload, new { type = "file" })
-        </div>
-
-    </div>
-
     <hr />
 
-    <button type="submit" class="btn btn-success">Add Document</button>
-    <input type="button" class="btn btn-success" value="Back to Documents" onclick="window.location = '../../ProfessionalDocuments/DocumentPortfolio';" />
-</form>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <form action="" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div style="padding-top:50px; padding-left:300px;">
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div>
+                @Html.LabelFor(m => m.FileUpload, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.FileUpload, new { type = "file" })
+            </div>
+
+        </div>
+
+        <hr />
+
+        <button type="submit" class="btn btn-success">Add Document</button>
+        <input type="button" class="btn btn-success" value="Back to Documents" onclick="window.location = '../../ProfessionalDocuments/DocumentPortfolio';" />
+    </form>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</body>

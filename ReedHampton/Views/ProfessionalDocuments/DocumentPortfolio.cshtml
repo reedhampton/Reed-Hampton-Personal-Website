@@ -5,6 +5,14 @@
 }
 
 <style>
+    body {
+        background-color: #c0bfb9;
+    }
+
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+
     .row > .column {
         padding: 0 8px;
         padding-top: 20px;
@@ -44,22 +52,23 @@
         }
 </style>
 
+<body>
 
-<h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px;">Document Portfolio</h1>
+    <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px;">Document Portfolio</h1>
 
 
-@{
-    if (User.Identity.IsAuthenticated)
-    {
-        <input type="button" class="btn btn-success" value="Add Document" onclick="window.location = 'Create';" />
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <input type="button" class="btn btn-success" value="Add Document" onclick="window.location = 'Create';" />
+        }
     }
-}
 
-<br />
+    <br />
 
     <div class="row centered">
 
-        @{ 
+        @{
             string temp_url = "";
 
             foreach (var item in Model)
@@ -67,25 +76,27 @@
                 temp_url = item.FileURL;
                 temp_url = temp_url.Remove(0, 2);
 
-                    <div class="column" id="hoverBox">
+                <div class="column" id="hoverBox">
 
-                        <a href="../@temp_url" target="_blank" style="text-decoration:none;">
-                            <h1 style="text-align:center; font-family:Garamond; font-size:32px; padding-bottom:25px;">@item.Title</h1>
+                    <a href="../@temp_url" target="_blank" style="text-decoration:none;">
+                        <h1 style="text-align:center; font-family:Garamond; font-size:32px; padding-bottom:25px;">@item.Title</h1>
 
-                            <img style="margin-left:auto; margin-right:auto; display:block;" src="~/StaticImages/Document-64.png" />
-                        </a>
+                        <img style="margin-left:auto; margin-right:auto; display:block;" src="~/StaticImages/Document-64.png" />
+                    </a>
 
-                        @if (User.Identity.IsAuthenticated)
-                        {
-                            <div style="text-align:center; padding-top:20px;">
-                                <input type="button" class="btn btn-success" style="margin-left:auto; margin-right:auto;" value="Edit" onclick="location.href='@Url.Action("Edit", "ProfessionalDocuments", new { id = item.Id, })'" />
-                                <input type="button" class="btn btn-danger"  value="Delete" onclick="location.href='@Url.Action("Delete", "ProfessionalDocuments", new { id = item.Id})'" />
-                            </div>
-                        }
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        <div style="text-align:center; padding-top:20px;">
+                            <input type="button" class="btn btn-success" style="margin-left:auto; margin-right:auto;" value="Edit" onclick="location.href='@Url.Action("Edit", "ProfessionalDocuments", new { id = item.Id, })'" />
+                            <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", "ProfessionalDocuments", new { id = item.Id})'" />
+                        </div>
+                    }
 
-                    </div>
+                </div>
 
 
-                }
             }
+        }
     </div>
+
+</body>

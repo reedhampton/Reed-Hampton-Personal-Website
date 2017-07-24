@@ -4,51 +4,65 @@
     ViewBag.Title = "Create";
 }
 
-<br />
-<h2>Add New Flip Board</h2>
+<style>
+    body {
+        background-color: #c0bfb9;
+    }
 
-<hr />
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+</style>
 
-
-<form action="" method="post" enctype="multipart/form-data">
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <div style="padding-top:50px; padding-left:300px;">
-        <div>
-            @Html.LabelFor(m => m.FlipBoardTitle, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.FlipBoardTitle, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.FlipBoardSubTitle, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.FlipBoardSubTitle, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div class="form-group-lg">
-            @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
-            @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div>
-            @Html.LabelFor(m => m.FlipBoardThumbnailUpload, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.FlipBoardThumbnailUpload, new { type = "file" })
-        </div>
-    </div>
+<body>
 
     <br />
+    <h2>Add New Flip Board</h2>
+
     <hr />
 
-    <button type="submit" class="btn btn-success">Add Flip Board</button>
-    <input type="button" class="btn btn-success" value="Back to Home Page" onclick="window.location = '../../AboutMe/Index';" />
-</form>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <form action="" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div style="padding-top:50px; padding-left:300px;">
+            <div>
+                @Html.LabelFor(m => m.FlipBoardTitle, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.FlipBoardTitle, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.FlipBoardSubTitle, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.FlipBoardSubTitle, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+                @Html.TextAreaFor(m => m.Description, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div>
+                @Html.LabelFor(m => m.FlipBoardThumbnailUpload, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.FlipBoardThumbnailUpload, new { type = "file" })
+            </div>
+        </div>
+
+        <br />
+        <hr />
+
+        <button type="submit" class="btn btn-success">Add Flip Board</button>
+        <input type="button" class="btn btn-success" value="Back to Home Page" onclick="window.location = '../../AboutMe/Home';" />
+    </form>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</body>

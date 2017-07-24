@@ -4,6 +4,19 @@
     ViewBag.Title = "Edit";
 }
 
+<style>
+    body {
+        background-color: #c0bfb9;
+    }
+
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+    
+</style>
+
+<body>
+
 <h2>Edit</h2>
 
 
@@ -58,9 +71,11 @@
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Back to List", "Home")
 </div>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
+
+</body>

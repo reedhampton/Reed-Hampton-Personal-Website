@@ -5,6 +5,14 @@
 }
 
     <style>
+        body {
+            background-color: #c0bfb9;
+        }
+
+        hr {
+            border-top: 0.5px solid #660000;
+        }
+
         #image_box {
             overflow: hidden;
             list-style: none;
@@ -58,83 +66,87 @@
         }
     </style>
 
-<h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px;">Project Portfolio</h1>
+<body>
 
-@{
-    if (User.Identity.IsAuthenticated)
-    {
-        <input type="button" class="btn btn-success" value="Add Project" onclick="window.location = 'Create';" />
-    }
-}
+    <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px;">Project Portfolio</h1>
 
-<br />
-<br />
-
-<!-------------------------------------------------------C# CREATE NEW HTML STRINGS------------------------------------------------------------------------------------------------->
-
-@{
-    string img_path = "";
-    int project_id;
-    string project_name = "";
-    string project_shortDescription = "";
-
-    string imagePath = "";
-    string htmlImageText = "";
-
-    int[] project_ids = new int[100];
-    string[] project_names = new string[100];
-    string[] project_shortDescriptions = new string[100];
-    string[] ImageBoxHTML = new string[100];
-    int count = 0;
-
-    foreach (var i in Model)
-    {
-        project_id = i.id;
-        project_name = i.ShortName;
-        project_shortDescription = i.ShortDescription;
-        img_path = i.ProjectImageUrl;
-
-        if (img_path != null)
+    @{
+        if (User.Identity.IsAuthenticated)
         {
-            img_path = img_path.Remove(0, 2);
-
-            imagePath = @Request.ApplicationPath + img_path;
-            htmlImageText = "<img src=\"" + imagePath + "\" style=\"width:300px; height:300px; object-fit:cover; overflow: hidden;\" class=\"hover-shadow cursor\")>";
-            project_name = "<h2 style=\"text-align:center; font-family:Garamond;\">" + project_name + "</h2>";
-            project_shortDescription = "<p style=\"text-align:center; font-family:Garamond; font-size:18px; color: #660000;\">" + project_shortDescription + "</p>";
-
-            project_ids[count] = project_id;
-            project_names[count] = project_name;
-            project_shortDescriptions[count] = project_shortDescription;
-            ImageBoxHTML[count] = htmlImageText;
-
-            count++;
+            <input type="button" class="btn btn-success" value="Add Project" onclick="window.location = 'Create';" />
         }
     }
-}
 
-<!-------------------------------------------------------THUMBNAILS------------------------------------------------------------------------------------------------->
+    <br />
+    <br />
 
-<div class="row">
+    <!-------------------------------------------------------C# CREATE NEW HTML STRINGS------------------------------------------------------------------------------------------------->
 
-    <ul id="image_box">
+    @{
+        string img_path = "";
+        int project_id;
+        string project_name = "";
+        string project_shortDescription = "";
 
-        @for (int i = 0; i < count; ++i)
+        string imagePath = "";
+        string htmlImageText = "";
+
+        int[] project_ids = new int[100];
+        string[] project_names = new string[100];
+        string[] project_shortDescriptions = new string[100];
+        string[] ImageBoxHTML = new string[100];
+        int count = 0;
+
+        foreach (var i in Model)
         {
-            if (ImageBoxHTML[i] != null)
-            {
-                <li>@(new HtmlString(ImageBoxHTML[i])) @(new HtmlString(project_names[i]))  @(new HtmlString(project_shortDescriptions[i])) </li>
+            project_id = i.id;
+            project_name = i.ShortName;
+            project_shortDescription = i.ShortDescription;
+            img_path = i.ProjectImageUrl;
 
-                if (User.Identity.IsAuthenticated)
-                {
-                    <li>
-                        <input type="button" class="btn btn-success" style="" value="Edit" onclick="location.href='@Url.Action("Edit", "DevelopmentProjects", new { id = project_ids[i]} )'" />
-                        <input type="button" class="btn btn-danger" style="" value="Delete" onclick="location.href='@Url.Action("Delete", "DevelopmentProjects", new { id = project_ids[i] })'" />
-                    </li>
-                }
+            if (img_path != null)
+            {
+                img_path = img_path.Remove(0, 2);
+
+                imagePath = @Request.ApplicationPath + img_path;
+                htmlImageText = "<img src=\"" + imagePath + "\" style=\"width:300px; height:300px; object-fit:cover; overflow: hidden;\" class=\"hover-shadow cursor\")>";
+                project_name = "<h2 style=\"text-align:center; font-family:Garamond;\">" + project_name + "</h2>";
+                project_shortDescription = "<p style=\"text-align:center; font-family:Garamond; font-size:18px; color: #660000;\">" + project_shortDescription + "</p>";
+
+                project_ids[count] = project_id;
+                project_names[count] = project_name;
+                project_shortDescriptions[count] = project_shortDescription;
+                ImageBoxHTML[count] = htmlImageText;
+
+                count++;
             }
         }
+    }
 
-    </ul>
+    <!-------------------------------------------------------THUMBNAILS------------------------------------------------------------------------------------------------->
 
-</div>
+    <div class="row">
+
+        <ul id="image_box">
+
+            @for (int i = 0; i < count; ++i)
+            {
+                if (ImageBoxHTML[i] != null)
+                {
+                    <li>@(new HtmlString(ImageBoxHTML[i])) @(new HtmlString(project_names[i]))  @(new HtmlString(project_shortDescriptions[i])) </li>
+
+                    if (User.Identity.IsAuthenticated)
+                    {
+                        <li>
+                            <input type="button" class="btn btn-success" style="" value="Edit" onclick="location.href='@Url.Action("Edit", "DevelopmentProjects", new { id = project_ids[i]} )'" />
+                            <input type="button" class="btn btn-danger" style="" value="Delete" onclick="location.href='@Url.Action("Delete", "DevelopmentProjects", new { id = project_ids[i] })'" />
+                        </li>
+                    }
+                }
+            }
+
+        </ul>
+
+    </div>
+
+</body>

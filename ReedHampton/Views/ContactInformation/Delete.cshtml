@@ -5,77 +5,90 @@
 }
 
 <style>
+    body {
+        background-color: #c0bfb9;
+    }
+
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+
     dl dd{
         padding-bottom:25px;
     }
 </style>
-<br />
+
+<body>
+
+    <br />
 
     <h2>Are you sure you want to delete @Html.ValueFor(model => model.ContactName)'s contact information?</h2>
 
-<hr />
-
-<div>
-    <dl class="dl-horizontal" style="padding-top:25px; padding-left:300px;">
-        <dt>
-            @Html.DisplayNameFor(model => model.ContactName)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ContactName)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.PrimaryEmail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.PrimaryEmail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.SecondaryEmail)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.SecondaryEmail)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.GitHubLink)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.GitHubLink)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.LinkedInLink)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.LinkedInLink)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.FacebookLink)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.FacebookLink)
-        </dd>
-
-    </dl>
-
     <hr />
 
-    @using (Html.BeginForm())
-    {
-        @Html.AntiForgeryToken()
+    <div>
+        <dl class="dl-horizontal" style="padding-top:25px; padding-left:300px;">
+            <dt>
+                @Html.DisplayNameFor(model => model.ContactName)
+            </dt>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete @Html.ValueFor(model => model.ContactName)" class="btn btn-danger" />
-            <input type="button" class="btn btn-success" value="Back to Contact Information" onclick="window.location = '../../ContactInformation/Index';" />
-        </div>
-    }
-</div>
+            <dd>
+                @Html.DisplayFor(model => model.ContactName)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.PrimaryEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.PrimaryEmail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.SecondaryEmail)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.SecondaryEmail)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.GitHubLink)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.GitHubLink)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.LinkedInLink)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.LinkedInLink)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.FacebookLink)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.FacebookLink)
+            </dd>
+
+        </dl>
+
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete @Html.ValueFor(model => model.ContactName)" class="btn btn-danger" />
+                <input type="button" class="btn btn-success" value="Back to Contact Information" onclick="window.location = '../../ContactInformation/Index';" />
+            </div>
+        }
+    </div>
+
+</body>

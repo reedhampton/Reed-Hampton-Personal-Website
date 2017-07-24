@@ -5,55 +5,68 @@
 
 @model ImageViewModel
 
-<h2>Add a Photo</h2>
+<style>
+    body {
+        background-color: #c0bfb9;
+    }
 
-<input type="button" class="btn btn-success" value="Add Album" onclick="window.location = '../../Albums/Create';" />
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+</style>
 
-<hr />
+<body>
 
-<form action="" method="post" enctype="multipart/form-data">
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
+    <h2>Add a Photo</h2>
 
-
-    <div style="padding-top:50px; padding-left:300px;">
-        <div>
-            @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.AltText, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.AltText, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div class="form-group-lg">
-            @Html.LabelFor(m => m.Caption, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.Caption, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.AlbumName,new { @class = "col-md-2 control-label" })
-            @Html.DropDownListFor(m => m.AlbumName, Model.Albums, "- Please select an Album -", new { @class = "form-control"})
-        </div>
-
-        <br />
-
-        <div>
-            @Html.LabelFor(m => m.ImageUpload, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.ImageUpload, new { type = "file" })
-        </div>
-    </div>
+    <input type="button" class="btn btn-success" value="Add Album" onclick="window.location = '../../Albums/Create';" />
 
     <hr />
 
-    <input value ="Add Image" type="submit" class="btn btn-success" data-form-method = "post" formaction="@Url.Action("Create" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})">
-    <input type="button" class="btn btn-success" value="Back to @ViewBag.albumName" onclick="location.href='@Url.Action("Albums" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})'" />
-</form>
+    <form action="" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
 
+
+        <div style="padding-top:50px; padding-left:300px;">
+            <div>
+                @Html.LabelFor(m => m.Title, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.Title, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.AltText, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.AltText, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.Caption, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.Caption, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.AlbumName, new { @class = "col-md-2 control-label" })
+                @Html.DropDownListFor(m => m.AlbumName, Model.Albums, "- Please select an Album -", new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div>
+                @Html.LabelFor(m => m.ImageUpload, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.ImageUpload, new { type = "file" })
+            </div>
+        </div>
+
+        <hr />
+
+        <input value="Add Image" type="submit" class="btn btn-success" data-form-method="post" formaction="@Url.Action("Create" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})">
+        <input type="button" class="btn btn-success" value="Back to @ViewBag.albumName" onclick="location.href='@Url.Action("Albums" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})'" />
+    </form>
+
+</body>

@@ -4,48 +4,63 @@
     ViewBag.Title = "Delete";
 }
 
-<br />
+<style>
+    body {
+        background-color: #c0bfb9;
+    }
 
-<h2>Are you sure you want to delete @Html.ValueFor(model => model.Name)?</h2>
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+</style>
 
-<hr />
+<body>
 
-<div>
-    <dl class="dl-horizontal" style="padding-top:25px; padding-left:300px;">
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
+    <br />
 
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Description)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Description)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.IsPublic)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IsPublic)
-        </dd>
-
-    </dl>
+    <h2>Are you sure you want to delete @Html.ValueFor(model => model.Name)?</h2>
 
     <hr />
 
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
+    <div>
+        <dl class="dl-horizontal" style="padding-top:25px; padding-left:300px;">
+            <dt>
+                @Html.DisplayNameFor(model => model.Name)
+            </dt>
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete @Html.ValueFor(model => model.Name)" class="btn btn-danger" />
-            <input type="button" class="btn btn-success" value="Back to Albums" onclick="window.location = '../../Albums/AlbumGallery';" />
-        </div>
-    }
-</div>
+            <dd>
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+
+            <dt>
+                @Html.DisplayNameFor(model => model.IsPublic)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.IsPublic)
+            </dd>
+
+        </dl>
+
+        <hr />
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Delete @Html.ValueFor(model => model.Name)" class="btn btn-danger" />
+                <input type="button" class="btn btn-success" value="Back to Albums" onclick="window.location = '../../Albums/AlbumGallery';" />
+            </div>
+        }
+    </div>
+
+</body>

@@ -5,6 +5,14 @@
 }
 <head>
     <style>
+        body {
+            background-color: #c0bfb9;
+        }
+
+        hr {
+            border-top: 0.5px solid #660000;
+        }
+
         img {
             display: inline;
             max-width: 1035px;
@@ -15,17 +23,19 @@
     </style>
 </head>
 
-<br />
+<body>
 
-<h2>Are you sure you want to delete @Html.ValueFor(model => model.Title)?"</h2>
-<div>
+    <br />
 
-    <hr />
+    <h2>Are you sure you want to delete @Html.ValueFor(model => model.Title)?"</h2>
+    <div>
 
-    @{
-        string img_path = Model.ImageUrl;
-        string urlq = "";
-        string q = "";
+        <hr />
+
+        @{
+            string img_path = Model.ImageUrl;
+            string urlq = "";
+            string q = "";
 
             if (img_path != null)
             {
@@ -36,43 +46,45 @@
             }
         }
 
-    @( new HtmlString(q))
+        @( new HtmlString(q))
 
-    <dl class="dl-horizontal" style="float:right; padding-top:150px; padding-right:0px;">
-        <dt>
-            @Html.DisplayNameFor(model => model.Title)
-        </dt>
+        <dl class="dl-horizontal" style="float:right; padding-top:150px; padding-right:0px;">
+            <dt>
+                @Html.DisplayNameFor(model => model.Title)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Title)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Title)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.AltText)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.AltText)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.AltText)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.AltText)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Caption)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Caption)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Caption)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Caption)
+            </dd>
 
-    </dl>
-    <hr />
+        </dl>
+        <hr />
 
-    <form action="" method="post" enctype="multipart/form-data">
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+        <form action="" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
 
-        <div class="form-actions no-color">
-            <input type="submit" class="btn btn-danger" value="Delete" data-form-method="post" formaction="@Url.Action("Delete" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})" />
-            <input type="button" class="btn btn-success" value="Back to @ViewBag.albumName" onclick="location.href='@Url.Action("Albums" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})'" />
-        </div>
-    </form>
-</div>
+            <div class="form-actions no-color">
+                <input type="submit" class="btn btn-danger" value="Delete" data-form-method="post" formaction="@Url.Action("Delete" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})" />
+                <input type="button" class="btn btn-success" value="Back to @ViewBag.albumName" onclick="location.href='@Url.Action("Albums" , "Images" , new{albumId = ViewBag.albumId , albumName = ViewBag.albumName})'" />
+            </div>
+        </form>
+    </div>
+
+</body>

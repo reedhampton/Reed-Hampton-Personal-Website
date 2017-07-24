@@ -16,7 +16,7 @@ namespace ReedHampton.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: AboutMe
-        public ActionResult Index()
+        public ActionResult Home()
         {
             return View(db.AboutMes.ToList());
         }
@@ -76,7 +76,7 @@ namespace ReedHampton.Controllers
 
                 db.AboutMes.Add(aboutMeToAdd);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
             }
 
             return View(model);
@@ -108,7 +108,7 @@ namespace ReedHampton.Controllers
             {
                 db.Entry(aboutMe).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Home");
             }
             return View(aboutMe);
         }
@@ -136,7 +136,7 @@ namespace ReedHampton.Controllers
             AboutMe aboutMe = db.AboutMes.Find(id);
             db.AboutMes.Remove(aboutMe);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Home");
         }
 
         protected override void Dispose(bool disposing)

@@ -369,7 +369,7 @@
     <Content Include="Views\AboutMe\Create.cshtml" />
     <Content Include="Views\AboutMe\Delete.cshtml" />
     <Content Include="Views\AboutMe\Edit.cshtml" />
-    <Content Include="Views\AboutMe\Index.cshtml" />
+    <Content Include="Views\AboutMe\Home.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

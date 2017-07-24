@@ -4,81 +4,95 @@
     ViewBag.Title = "Edit";
 }
 
-<br />
+<style>
+    body {
+        background-color: #c0bfb9;
+    }
 
-<h2>Edit @Html.ValueFor(model => model.Name)</h2>
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+</style>
+
+<body>
+
+    <br />
+
+    <h2>Edit @Html.ValueFor(model => model.Name)</h2>
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <hr />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.HiddenFor(model => model.Id)
+        <div class="form-horizontal">
+            <hr />
 
-        <div style="padding-top:50px; padding-left:300px;">
-            <div class="form-group">
-                @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
-                </div>
-            </div>
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            @Html.HiddenFor(model => model.Id)
 
-            <br />
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
-                </div>
-            </div>
-
-            <br />
-
-            <div class="form-group">
-                @Html.LabelFor(model => model.IsPublic, htmlAttributes: new { @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    <div class="checkbox">
-                        @Html.EditorFor(model => model.IsPublic)
-                        @Html.ValidationMessageFor(model => model.IsPublic, "", new { @class = "text-danger" })
+            <div style="padding-top:50px; padding-left:300px;">
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
                     </div>
                 </div>
-            </div>
 
-            <br />
+                <br />
 
-            <div class="form-group" hidden>
-                @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @htmlAttributes = new { @readonly = "readonly" }, @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Description, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Description, "", new { @class = "text-danger" })
+                    </div>
                 </div>
+
+                <br />
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.IsPublic, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.IsPublic)
+                            @Html.ValidationMessageFor(model => model.IsPublic, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+
+                <div class="form-group" hidden>
+                    @Html.LabelFor(model => model.CreatedDate, htmlAttributes: new { @htmlAttributes = new { @readonly = "readonly" }, @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.CreatedDate, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.CreatedDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group" hidden>
+                    @Html.LabelFor(model => model.AlbumThumbnailUrl, htmlAttributes: new { @htmlAttributes = new { @readonly = "readonly" }, @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.AlbumThumbnailUrl, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.AlbumThumbnailUrl, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
             </div>
 
-            <div class="form-group" hidden>
-                @Html.LabelFor(model => model.AlbumThumbnailUrl, htmlAttributes: new { @htmlAttributes = new { @readonly = "readonly" }, @class = "control-label col-md-2" })
-                <div class="col-md-10">
-                    @Html.EditorFor(model => model.AlbumThumbnailUrl, new { htmlAttributes = new { @readonly = "readonly", @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.AlbumThumbnailUrl, "", new { @class = "text-danger" })
-                </div>
-            </div>
+            <hr />
+
+
+            <input type="submit" value="Update @Html.ValueFor(model => model.Name)" class="btn btn-success" />
+            <input type="button" class="btn btn-success" value="Back to Albums" onclick="window.location = '../../Albums/AlbumGallery';" />
 
         </div>
+    }
 
-        <hr />
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
 
-
-        <input type="submit" value="Update @Html.ValueFor(model => model.Name)" class="btn btn-success" />
-        <input type="button" class="btn btn-success" value="Back to Albums" onclick="window.location = '../../Albums/AlbumGallery';" />
-
-    </div>
-}
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+</body>

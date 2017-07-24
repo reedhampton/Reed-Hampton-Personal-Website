@@ -4,50 +4,64 @@
     ViewBag.Title = "Create";
 }
 
-<br />
-<h2>Add New Album</h2>
+<style>
+    body {
+        background-color: #c0bfb9;
+    }
 
-<hr />
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+</style>
 
+<body>
 
-<form action="" method="post" enctype="multipart/form-data">
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <div style="padding-top:50px; padding-left:300px;">
-        <div>
-            @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div class="form-group">
-            @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div class="form-group-lg">
-            @Html.LabelFor(m => m.IsPublic, new { @class = "col-md-2 control-label" })
-            @Html.EditorFor(m => m.IsPublic, new { @class = "form-control" })
-        </div>
-
-        <br />
-
-        <div>
-            @Html.LabelFor(m => m.AlbumThumbnailUpload, new { @class = "col-md-2 control-label" })
-            @Html.TextBoxFor(m => m.AlbumThumbnailUpload, new { type = "file" })
-        </div>
-    </div>
+    <br />
+    <h2>Add New Album</h2>
 
     <hr />
 
-    <button type="submit" class="btn btn-success">Add Album</button>
-    <input type="button" class="btn btn-success" value="Back to Albums" onclick="window.location = '../../Albums/AlbumGallery';" />
-</form>
+
+    <form action="" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div style="padding-top:50px; padding-left:300px;">
+            <div>
+                @Html.LabelFor(m => m.Name, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-group">
+                @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.IsPublic, new { @class = "col-md-2 control-label" })
+                @Html.EditorFor(m => m.IsPublic, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div>
+                @Html.LabelFor(m => m.AlbumThumbnailUpload, new { @class = "col-md-2 control-label" })
+                @Html.TextBoxFor(m => m.AlbumThumbnailUpload, new { type = "file" })
+            </div>
+        </div>
+
+        <hr />
+
+        <button type="submit" class="btn btn-success">Add Album</button>
+        <input type="button" class="btn btn-success" value="Back to Albums" onclick="window.location = '../../Albums/AlbumGallery';" />
+    </form>
 
     @section Scripts {
         @Scripts.Render("~/bundles/jqueryval")
     }
+
+</body>

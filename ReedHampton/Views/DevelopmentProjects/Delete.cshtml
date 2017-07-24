@@ -6,6 +6,14 @@
 
 <head>
     <style>
+        body {
+            background-color: #c0bfb9;
+        }
+
+        hr {
+            border-top: 0.5px solid #660000;
+        }
+
         img {
             display: inline;
             max-width: 690px;
@@ -16,101 +24,104 @@
     </style>
 </head>
 
-<br />
+<body>
 
-<h2>Are you sure you want to delete @Html.ValueFor(model => model.ShortName)?"</h2>
+    <br />
 
-<div>
+    <h2>Are you sure you want to delete @Html.ValueFor(model => model.ShortName)?"</h2>
 
-    <hr />
+    <div>
 
-    @{
-        string img_path = Model.ProjectImageUrl;
-        string urlq = "";
-        string q = "";
+        <hr />
 
-        if (img_path != null)
-        {
-            img_path = img_path.Remove(0, 2);
+        @{
+            string img_path = Model.ProjectImageUrl;
+            string urlq = "";
+            string q = "";
 
-            urlq = @Request.ApplicationPath + img_path;
-            q = "<img src=\"" + urlq + "\" alt=\"TEST\"/>";
+            if (img_path != null)
+            {
+                img_path = img_path.Remove(0, 2);
+
+                urlq = @Request.ApplicationPath + img_path;
+                q = "<img src=\"" + urlq + "\" alt=\"TEST\"/>";
+            }
         }
-    }
 
-    @( new HtmlString(q))
+        @( new HtmlString(q))
 
-    <dl class="dl-horizontal" style="float:right; padding-top:85px; padding-right:0px;">
+        <dl class="dl-horizontal" style="float:right; padding-top:85px; padding-right:0px;">
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShortName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ShortName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ShortName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ShortName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ShortDescription)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.ShortDescription)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.ShortDescription)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.ShortDescription)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LongName)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LongName)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LongName)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LongName)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Category)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Category)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Category)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Category)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Date)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.Date)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.Date)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.Date)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.LongDescription)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.LongDescription)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.LongDescription)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.LongDescription)
+            </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.SkillsNeeded)
-        </dt>
+            <dt>
+                @Html.DisplayNameFor(model => model.SkillsNeeded)
+            </dt>
 
-        <dd>
-            @Html.DisplayFor(model => model.SkillsNeeded)
-        </dd>
+            <dd>
+                @Html.DisplayFor(model => model.SkillsNeeded)
+            </dd>
 
-    </dl>
+        </dl>
 
-    <hr />
+        <hr />
 
-    <form action="" method="post" enctype="multipart/form-data">
-        @Html.AntiForgeryToken()
-        @Html.ValidationSummary(true)
+        <form action="" method="post" enctype="multipart/form-data">
+            @Html.AntiForgeryToken()
+            @Html.ValidationSummary(true)
 
-        <div class="form-actions no-color">
-            <input type="submit" class="btn btn-danger" value="Delete" data-form-method="post" formaction="@Url.Action("Delete" , "DevelopmentProjects")" />
-            <input type="button" class="btn btn-success" value="Back to Portfolio" onclick="location.href='@Url.Action("Portfolio" , "DevelopmentProjects")'" />
-        </div>
-    </form>
+            <div class="form-actions no-color">
+                <input type="submit" class="btn btn-danger" value="Delete" data-form-method="post" formaction="@Url.Action("Delete" , "DevelopmentProjects")" />
+                <input type="button" class="btn btn-success" value="Back to Portfolio" onclick="location.href='@Url.Action("Portfolio" , "DevelopmentProjects")'" />
+            </div>
+        </form>
 
-</div>
+    </div>
 
+</body>

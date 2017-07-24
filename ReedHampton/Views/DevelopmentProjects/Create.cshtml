@@ -4,85 +4,99 @@
     ViewBag.Title = "Create";
 }
 
-<br />
-<h2>Add New Project</h2>
+<style>
+    body {
+        background-color: #c0bfb9;
+    }
 
-<hr />
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+</style>
 
+<body>
 
-<form action="" method="post" enctype="multipart/form-data">
-    @Html.AntiForgeryToken()
-    @Html.ValidationSummary(true)
-
-    <div style="padding-top:50px; padding-left:200px;">
-        <div>
-            @Html.LabelFor(m => m.ShortName, new { @class = "col-md-6 control-label" })
-            @Html.TextBoxFor(m => m.ShortName, new { @class = "form-control" })
-        </div>
-
-        <br />
-        <br />
-
-        <div class="form-group-lg">
-            @Html.LabelFor(m => m.ShortDescription, new { @class = "col-md-6 control-label" })
-            @Html.TextBoxFor(m => m.ShortDescription, new { @class = "form-control" })
-        </div>
-
-        <br />
-        <br />
-
-        <div class="form-group-lg">
-            @Html.LabelFor(m => m.LongName, new { @class = "col-md-6 control-label" })
-            @Html.TextBoxFor(m => m.LongName, new { @class = "form-control" })
-        </div>
-
-        <br />
-        <br />
-
-        <div class="form-group-lg">
-            @Html.LabelFor(m => m.LongDescription, new { @class = "col-md-6 control-label" })
-            @Html.TextBoxFor(m => m.LongDescription, new { @class = "form-control" })
-        </div>
-
-        <br />
-        <br />
-
-        <div class="form-group-sm">
-            @Html.LabelFor(m => m.Category, new { @class = "col-md-6 control-label" })
-            @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
-        </div>
-
-        <br />
-        <br />
-
-        <div class="form-group-sm">
-            @Html.LabelFor(m => m.Date, new { @class = "col-md-6 control-label" })
-            @Html.TextBoxFor(m => m.Date, new { @class = "form-control" })
-        </div>
-
-        <br />
-        <br />
-
-        <div class="form-group-lg">
-            @Html.LabelFor(m => m.SkillsNeeded, new { @class = "col-md-6 control-label" })
-            @Html.TextBoxFor(m => m.SkillsNeeded, new { @class = "form-control" })
-        </div>
-
-        <br />
-        <br />
-
-        <div>
-            @Html.LabelFor(m => m.ProjectThumbnailUpload, new { @class = "col-md-6 control-label" })
-            @Html.TextBoxFor(m => m.ProjectThumbnailUpload, new { type = "file" })
-        </div>
-    </div>
+    <br />
+    <h2>Add New Project</h2>
 
     <hr />
 
-    <button type="submit" class="btn btn-success">Add Project</button>
-    <input type="button" class="btn btn-success" value="Back to Projects" onclick="window.location = '../../DevelopmentProjects/Portfolio';" />
-</form>
 
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <form action="" method="post" enctype="multipart/form-data">
+        @Html.AntiForgeryToken()
+        @Html.ValidationSummary(true)
+
+        <div style="padding-top:50px; padding-left:200px;">
+            <div>
+                @Html.LabelFor(m => m.ShortName, new { @class = "col-md-6 control-label" })
+                @Html.TextBoxFor(m => m.ShortName, new { @class = "form-control" })
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.ShortDescription, new { @class = "col-md-6 control-label" })
+                @Html.TextBoxFor(m => m.ShortDescription, new { @class = "form-control" })
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.LongName, new { @class = "col-md-6 control-label" })
+                @Html.TextBoxFor(m => m.LongName, new { @class = "form-control" })
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.LongDescription, new { @class = "col-md-6 control-label" })
+                @Html.TextBoxFor(m => m.LongDescription, new { @class = "form-control" })
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group-sm">
+                @Html.LabelFor(m => m.Category, new { @class = "col-md-6 control-label" })
+                @Html.TextBoxFor(m => m.Category, new { @class = "form-control" })
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group-sm">
+                @Html.LabelFor(m => m.Date, new { @class = "col-md-6 control-label" })
+                @Html.TextBoxFor(m => m.Date, new { @class = "form-control" })
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.SkillsNeeded, new { @class = "col-md-6 control-label" })
+                @Html.TextBoxFor(m => m.SkillsNeeded, new { @class = "form-control" })
+            </div>
+
+            <br />
+            <br />
+
+            <div>
+                @Html.LabelFor(m => m.ProjectThumbnailUpload, new { @class = "col-md-6 control-label" })
+                @Html.TextBoxFor(m => m.ProjectThumbnailUpload, new { type = "file" })
+            </div>
+        </div>
+
+        <hr />
+
+        <button type="submit" class="btn btn-success">Add Project</button>
+        <input type="button" class="btn btn-success" value="Back to Projects" onclick="window.location = '../../DevelopmentProjects/Portfolio';" />
+    </form>
+
+    @section Scripts {
+        @Scripts.Render("~/bundles/jqueryval")
+    }
+
+</body>

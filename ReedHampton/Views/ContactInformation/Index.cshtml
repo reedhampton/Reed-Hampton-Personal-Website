@@ -4,6 +4,14 @@
     ViewBag.Title = "Index";
 }
 <style>
+    body {
+        background-color: #c0bfb9;
+    }
+
+    hr {
+        border-top: 0.5px solid #660000;
+    }
+
     .row {
         text-align: center;
         min-width: 412px;
@@ -34,84 +42,87 @@
     
 </style>
 
-@{
-    if (User.Identity.IsAuthenticated)
-    {
-        <input type="button" style="float:left; margin-top:35px; margin-right:15px;" class="btn btn-success" value="Add Contact Information" onclick="location.href='@Url.Action("Create", "ContactInformation")'" />
+<body>
+
+    @{
+        if (User.Identity.IsAuthenticated)
+        {
+            <input type="button" style="float:left; margin-top:35px; margin-right:15px;" class="btn btn-success" value="Add Contact Information" onclick="location.href='@Url.Action("Create", "ContactInformation")'" />
+        }
     }
-}
 
 
-<h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:130px;"> Let's be, Amici... Tomodachi... Copains... Friends</h1>
+    <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:130px;"> Let's be, Amici... Tomodachi... Copains... Friends</h1>
 
 
 
-@{
-    string facebookURL = "";
-    string linkedInURL = "";
-    string gitHubURL = "";
+    @{
+        string facebookURL = "";
+        string linkedInURL = "";
+        string gitHubURL = "";
 
-    string facebookHTML = "";
-    string linkedInHTML = "";
-    string gitHubHTML = "";
-    string emailHTML = "";
+        string facebookHTML = "";
+        string linkedInHTML = "";
+        string gitHubHTML = "";
+        string emailHTML = "";
 
-    string endLinkTag = "</a>";
+        string endLinkTag = "</a>";
 
-    foreach (var item in Model)
-    {
-        facebookURL = item.FacebookLink;
-        linkedInURL = item.LinkedInLink;
-        gitHubURL = item.GitHubLink;
-        emailHTML = "<a href=\"mailto:" + item.PrimaryEmail + "\" target=\"_top\">";
+        foreach (var item in Model)
+        {
+            facebookURL = item.FacebookLink;
+            linkedInURL = item.LinkedInLink;
+            gitHubURL = item.GitHubLink;
+            emailHTML = "<a href=\"mailto:" + item.PrimaryEmail + "\" target=\"_top\">";
 
-        facebookHTML = "<a href=\"" + facebookURL + "\" target=\"_blank\">";
-        linkedInHTML = "<a href=\"" + linkedInURL + "\" target=\"_blank\">";
-        gitHubHTML = "<a href=\"" + gitHubURL + "\" target=\"_blank\">";
+            facebookHTML = "<a href=\"" + facebookURL + "\" target=\"_blank\">";
+            linkedInHTML = "<a href=\"" + linkedInURL + "\" target=\"_blank\">";
+            gitHubHTML = "<a href=\"" + gitHubURL + "\" target=\"_blank\">";
 
-        <div class="row" style="text-align:center;">
+            <div class="row" style="text-align:center;">
 
-            <!--FACEBOOK LINK AND IMAGE---------------------------------------------------------------------------->
+                <!--FACEBOOK LINK AND IMAGE---------------------------------------------------------------------------->
 
-            <div class="col grow" style="padding-left:75px;">
-                @(new HtmlString(facebookHTML))
-                    <img src="~/StaticImages/Black_FaceBook_Logo.jpg" alt="Facebook" style="height:66px; width:66px;"/>
-                @(new HtmlString(endLinkTag))
-            </div>
-
-            <!--LINKEDIN LINK AND IMAGE---------------------------------------------------------------------------->
-
-            <div class="col grow" style="padding-left:75px;">
-                @(new HtmlString(linkedInHTML))
-                <img src="~/StaticImages/In-Black-66px-TM.png" alt="LinkedIn" />
-                @(new HtmlString(endLinkTag))
-            </div>
-
-            <!--GITHUB LINK AND IMAGE---------------------------------------------------------------------------->
-
-            <div class="col grow" style="padding-left:75px;">
-                @(new HtmlString(gitHubHTML))
-                <img src="~/StaticImages/GitHub-Mark-64px.png" alt="GitHub" />
-                @(new HtmlString(endLinkTag))
-            </div>
-
-            <!--EMAIL LINK AND IMAGE---------------------------------------------------------------------------->
-
-            <div class="col grow" style="padding-left:75px;">
-                @(new HtmlString(emailHTML))
-                <img src="~/StaticImages/email_64x64.png" alt="Email" />
-                @(new HtmlString(endLinkTag))
-            </div>
-
-            @if (User.Identity.IsAuthenticated)
-            {
-                <div style="padding-left:50px; padding-top:25px;">
-                    <input type="button" class="btn btn-success" style="" value="Edit" onclick="location.href='@Url.Action("Edit", "ContactInformation", new { id = item.id})'" />
-                    <input type="button" class="btn btn-danger" style="" value="Delete" onclick="location.href='@Url.Action("Delete", "ContactInformation", new { id = item.id})'" />
+                <div class="col grow" style="padding-left:75px;">
+                    @(new HtmlString(facebookHTML))
+                    <img src="~/StaticImages/Black_FaceBook_Logo.jpg" alt="Facebook" style="height:66px; width:66px;" />
+                    @(new HtmlString(endLinkTag))
                 </div>
-            }
 
-        </div>
+                <!--LINKEDIN LINK AND IMAGE---------------------------------------------------------------------------->
+
+                <div class="col grow" style="padding-left:75px;">
+                    @(new HtmlString(linkedInHTML))
+                    <img src="~/StaticImages/In-Black-66px-TM.png" alt="LinkedIn" />
+                    @(new HtmlString(endLinkTag))
+                </div>
+
+                <!--GITHUB LINK AND IMAGE---------------------------------------------------------------------------->
+
+                <div class="col grow" style="padding-left:75px;">
+                    @(new HtmlString(gitHubHTML))
+                    <img src="~/StaticImages/GitHub-Mark-64px.png" alt="GitHub" />
+                    @(new HtmlString(endLinkTag))
+                </div>
+
+                <!--EMAIL LINK AND IMAGE---------------------------------------------------------------------------->
+
+                <div class="col grow" style="padding-left:75px;">
+                    @(new HtmlString(emailHTML))
+                    <img src="~/StaticImages/email_64x64.png" alt="Email" />
+                    @(new HtmlString(endLinkTag))
+                </div>
+
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <div style="padding-left:50px; padding-top:25px;">
+                        <input type="button" class="btn btn-success" style="" value="Edit" onclick="location.href='@Url.Action("Edit", "ContactInformation", new { id = item.id})'" />
+                        <input type="button" class="btn btn-danger" style="" value="Delete" onclick="location.href='@Url.Action("Delete", "ContactInformation", new { id = item.id})'" />
+                    </div>
+                }
+
+            </div>
+        }
     }
-}
 
+</body>

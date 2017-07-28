@@ -16,6 +16,10 @@ namespace ReedHampton.Models
         [Display(Name = "Document Description")]
         public string Description { get; set; }
 
+        [Required]
+        [Display(Name = "Icon")]
+        public string Icon { get; set; }
+
         [DataType(DataType.Upload)]
         [Display(Name = "File Upload")]
         public HttpPostedFileBase FileUpload { get; set; }

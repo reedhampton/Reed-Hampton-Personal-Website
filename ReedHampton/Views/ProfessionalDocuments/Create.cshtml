@@ -6,7 +6,7 @@
 
 <style>
     body {
-        background-color: #c0bfb9;
+        background-color: #f5eee1;
     }
 
     hr {
@@ -39,6 +39,13 @@
             <div class="form-group-lg">
                 @Html.LabelFor(m => m.Description, new { @class = "col-md-2 control-label" })
                 @Html.TextBoxFor(m => m.Description, new { @class = "form-control" })
+            </div>
+
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.Icon, new { @class = "col-md-2 control-label" })
+                @Html.DropDownListFor(m => m.Icon, new SelectList(new string[] { "DocumentGolden.png", "PictureGolden.png", "SpreadSheetGolden.png" }))
             </div>
 
             <br />

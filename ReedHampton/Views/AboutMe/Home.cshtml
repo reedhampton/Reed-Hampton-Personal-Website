@@ -6,7 +6,7 @@
 
 <style>
     body {
-        background-color: #c0bfb9;
+        background-color: #f5eee1;
     }
 
     hr {
@@ -33,7 +33,7 @@
         width: 100%;
         height: 100%;
         transform-style: preserve-3d;
-        transition: all 1.0s linear;
+        transition: all 0.8s linear;
     }
 
     #f1_container:hover #f1_card {
@@ -74,15 +74,15 @@
 
 <body>
 
-    <div class="jumbotron" id="darken">
+    <div class="jumbotron" id="darken" style="margin-top:60px;">
         <h1 style="text-align:center;">Welcome!</h1>
-        <p class="lead" style="text-align:center;">Developer, Amateur Novelist, Greenhorn Photographer...</p>
+        <p class="lead" style="text-align:center;"><strong>Developer, Amateur Novelist, Greenhorn Photographer...</strong></p>
     </div> 
 
     @{
         if (User.Identity.IsAuthenticated)
         {
-            <input type="button" class="btn btn-success" value="Add Flip Board" onclick="window.location = 'Create';" />
+            <input type="button" class="btn btn-success" value="Add Flip Board" onclick="location.href='@Url.Action("Create", "AboutMe")'" />
         }
     }
 
@@ -95,6 +95,7 @@
 
         int[] FlipBoard_ids = new int[100];
         string[] FlipBoard_Titles = new string[100];
+        string[] FlipBoard_SubTitles = new string[100];
         string[] FlipBoard_Descriptions = new string[100];
         string[] FlipBoardThumbnailUrls = new string[100];
         int count = 0;
@@ -102,6 +103,7 @@
         foreach (var i in Model)
         {
             FlipBoard_Titles[count] = i.FlipBoardTitle;
+            FlipBoard_SubTitles[count] = i.FlipBoardSubTitle;
             FlipBoard_ids[count] = i.id;
             FlipBoard_Descriptions[count] = i.Description;
             FlipBoardImage_Path = i.FlipboardThumnbailUrl;
@@ -133,11 +135,12 @@
 
                         <div class="front face">
                             @(new HtmlString(FlipBoardThumbnailUrls[i]))
-                            <h1 style="text-align:center; color:white;">@FlipBoard_Titles[i]</h1>
+                            <h1 style="text-align:center; font-family:Garamond; color:white;">@FlipBoard_Titles[i]</h1>
                         </div>
 
                         <div class="back face center">
-                            <p style="text-align:center; font-size:22px; font-family:Garamond; color:white;">@FlipBoard_Descriptions[i]</p>
+                            <h4 style="text-align:center; font-size:24px; font-style: italic; font-family: 'Century Gothic'; color:#c0bfb9;">@FlipBoard_SubTitles[i]</h4>
+                            <p style="text-align:center; padding-top: 30px ; font-size:18px; font-family: 'Century Gothic'; color:#c0bfb9;">@FlipBoard_Descriptions[i]</p>
                         </div>
 
                     </div>

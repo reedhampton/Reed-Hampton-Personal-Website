@@ -41,6 +41,7 @@ namespace ReedHampton.Controllers
 
                 DocumentToAdd.Title = model.Title;
                 DocumentToAdd.Description = model.Description;
+                DocumentToAdd.Icon = model.Icon;
 
                 if (model.FileUpload != null && model.FileUpload.ContentLength > 0)
                 {

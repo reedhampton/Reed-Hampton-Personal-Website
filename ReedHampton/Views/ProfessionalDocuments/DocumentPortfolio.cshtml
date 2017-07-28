@@ -6,17 +6,23 @@
 
 <style>
     body {
-        background-color: #c0bfb9;
+        background-color: #f5eee1;
     }
 
     hr {
         border-top: 0.5px solid #660000;
     }
 
+    #darken {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/SunnyForest.jpg);
+    }
+
     .row > .column {
         padding: 0 8px;
         padding-top: 20px;
         padding-bottom: 80px;
+        margin-top: 40px;
+        margin-bottom: 40px;
     }
 
     .row:after {
@@ -26,17 +32,18 @@
     }
 
     .column {
+        margin-left: 75px;
         float: left;
         width: 25%;
     }
 
+    #hoverBox {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/DiagonalBlue.jpg);
+        background-size: cover;
+        border-radius: 25px;
+    }
     #hoverBox:hover h1 {
-        color:#660000;
-        -webkit-transform: scale(1.08);
-        -ms-transform: scale(1.08);
-        transform: scale(1.08);
-        -webkit-transition: transform .3s ease-in-out;
-        -webkit-filter: blur(0);
+        
     }
 
     .centered {
@@ -44,59 +51,74 @@
         font-size: 0;
     }
 
-        .centered > div {
-            float: none;
-            display: inline-block;
-            text-align: left;
-            font-size: 13px;
-        }
+    .centered > div {
+        float: none;
+        display: inline-block;
+        text-align: left;
+        font-size: 13px;
+    }
+
+    .grow {
+        transition: 1.5s ease;
+    }
+
+    .grow:hover {
+        -webkit-transform: scale(1.1);
+        -ms-transform: scale(1.1);
+        transform: scale(1.1);
+        transition: 0.5s ease;
+    }
 </style>
 
 <body>
 
-    <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px;">Document Portfolio</h1>
-
-
-    @{
-        if (User.Identity.IsAuthenticated)
-        {
-            <input type="button" class="btn btn-success" value="Add Document" onclick="window.location = 'Create';" />
-        }
-    }
-
-    <br />
-
-    <div class="row centered">
+    <div class="jumbotron" id="darken" style="background-size:cover; margin-top:60px;">
+        <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px; color:white;">Document Portfolio</h1>
+    </div>
+    
+    <hr />
 
         @{
-            string temp_url = "";
-
-            foreach (var item in Model)
+            if (User.Identity.IsAuthenticated)
             {
-                temp_url = item.FileURL;
-                temp_url = temp_url.Remove(0, 2);
-
-                <div class="column" id="hoverBox">
-
-                    <a href="../@temp_url" target="_blank" style="text-decoration:none;">
-                        <h1 style="text-align:center; font-family:Garamond; font-size:32px; padding-bottom:25px;">@item.Title</h1>
-
-                        <img style="margin-left:auto; margin-right:auto; display:block;" src="~/StaticImages/Document-64.png" />
-                    </a>
-
-                    @if (User.Identity.IsAuthenticated)
-                    {
-                        <div style="text-align:center; padding-top:20px;">
-                            <input type="button" class="btn btn-success" style="margin-left:auto; margin-right:auto;" value="Edit" onclick="location.href='@Url.Action("Edit", "ProfessionalDocuments", new { id = item.Id, })'" />
-                            <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", "ProfessionalDocuments", new { id = item.Id})'" />
-                        </div>
-                    }
-
-                </div>
-
-
+                <input type="button" class="btn btn-success" value="Add Document" onclick="window.location = 'Create';" />
             }
         }
-    </div>
+
+        <div class="row centered">
+
+            @{
+                string temp_url = "";
+                string imageHTML = "";
+
+                foreach (var item in Model)
+                {
+                    temp_url = item.FileURL;
+                    temp_url = temp_url.Remove(0, 2);
+
+                    imageHTML = "<img style=\"margin-left:auto; margin-right:auto; display:block;\" src=\"/StaticImages/" + item.Icon + "\" >";
+
+                    <div class="column grow" id="hoverBox">
+
+                        <a href="../@temp_url" target="_blank" style="text-decoration:none;">
+                            <h1 style="text-align:center; font-family:Garamond; font-size:32px; padding-bottom:25px; color:#FFFFCC">@item.Title</h1>
+                            @(new HtmlString(imageHTML))
+                        </a>
+
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <div style="text-align:center; padding-top:20px;">
+                                <input type="button" class="btn btn-success" style="margin-left:auto; margin-right:auto;" value="Edit" onclick="location.href='@Url.Action("Edit", "ProfessionalDocuments", new { id = item.Id, })'" />
+                                <input type="button" class="btn btn-danger" value="Delete" onclick="location.href='@Url.Action("Delete", "ProfessionalDocuments", new { id = item.Id})'" />
+                            </div>
+                        }
+
+                    </div>
+
+
+                }
+            }
+        </div>
+
 
 </body>

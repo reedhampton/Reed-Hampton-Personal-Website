@@ -11,11 +11,13 @@ using System.IO;
 
 namespace ReedHampton.Controllers
 {
+    [Authorize]
     public class AboutMeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: AboutMe
+        [AllowAnonymous]
         public ActionResult Home()
         {
             return View(db.AboutMes.ToList());

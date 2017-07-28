@@ -5,7 +5,11 @@
 }
 <style>
     body {
-        background-color: #c0bfb9;
+        background-color: #f5eee1;
+    }
+
+    #darken {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/RainyDay.jpeg);
     }
 
     hr {
@@ -47,14 +51,15 @@
     @{
         if (User.Identity.IsAuthenticated)
         {
-            <input type="button" style="float:left; margin-top:35px; margin-right:15px;" class="btn btn-success" value="Add Contact Information" onclick="location.href='@Url.Action("Create", "ContactInformation")'" />
+            <input type="button" style="float:left; margin-top:35px; margin-right:15px; margin-top:60px;" class="btn btn-success" value="Add Contact Information" onclick="location.href='@Url.Action("Create", "ContactInformation")'" />
         }
     }
 
+    <div class="jumbotron" id="darken" style="background-size:cover;">
+        <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px; color:white;"> Let's be, Amici... Tomodachi... Copains... Friends</h1>
+    </div>
 
-    <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:130px;"> Let's be, Amici... Tomodachi... Copains... Friends</h1>
-
-
+    <hr />
 
     @{
         string facebookURL = "";
@@ -79,11 +84,11 @@
             linkedInHTML = "<a href=\"" + linkedInURL + "\" target=\"_blank\">";
             gitHubHTML = "<a href=\"" + gitHubURL + "\" target=\"_blank\">";
 
-            <div class="row" style="text-align:center;">
+            <div class="row" style="text-align:center; padding-top:50px">
 
                 <!--FACEBOOK LINK AND IMAGE---------------------------------------------------------------------------->
 
-                <div class="col grow" style="padding-left:75px;">
+                <div class="col grow" style="padding-left:100px;">
                     @(new HtmlString(facebookHTML))
                     <img src="~/StaticImages/Black_FaceBook_Logo.jpg" alt="Facebook" style="height:66px; width:66px;" />
                     @(new HtmlString(endLinkTag))
@@ -91,7 +96,7 @@
 
                 <!--LINKEDIN LINK AND IMAGE---------------------------------------------------------------------------->
 
-                <div class="col grow" style="padding-left:75px;">
+                <div class="col grow" style="padding-left:100px;">
                     @(new HtmlString(linkedInHTML))
                     <img src="~/StaticImages/In-Black-66px-TM.png" alt="LinkedIn" />
                     @(new HtmlString(endLinkTag))
@@ -99,7 +104,7 @@
 
                 <!--GITHUB LINK AND IMAGE---------------------------------------------------------------------------->
 
-                <div class="col grow" style="padding-left:75px;">
+                <div class="col grow" style="padding-left:100px;">
                     @(new HtmlString(gitHubHTML))
                     <img src="~/StaticImages/GitHub-Mark-64px.png" alt="GitHub" />
                     @(new HtmlString(endLinkTag))
@@ -107,7 +112,7 @@
 
                 <!--EMAIL LINK AND IMAGE---------------------------------------------------------------------------->
 
-                <div class="col grow" style="padding-left:75px;">
+                <div class="col grow" style="padding-left:100px;">
                     @(new HtmlString(emailHTML))
                     <img src="~/StaticImages/email_64x64.png" alt="Email" />
                     @(new HtmlString(endLinkTag))

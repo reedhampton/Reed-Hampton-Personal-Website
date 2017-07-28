@@ -19,6 +19,10 @@ namespace ReedHampton.Models
         [Display(Name = "Document Description")]
         public string Description { get; set; }
 
+        [Required]
+        [Display(Name = "Icon")]
+        public string Icon { get; set; }
+
         [DataType(DataType.ImageUrl)]
         [Display(Name = "Document URL")]
         public string FileURL { get; set; }

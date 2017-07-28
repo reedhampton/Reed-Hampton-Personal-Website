@@ -272,6 +272,10 @@
     <Compile Include="Migrations\201707232240268_FlipBoard1.0.0.Designer.cs">
       <DependentUpon>201707232240268_FlipBoard1.0.0.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201707271955259_UpdateToDocuments.cs" />
+    <Compile Include="Migrations\201707271955259_UpdateToDocuments.Designer.cs">
+      <DependentUpon>201707271955259_UpdateToDocuments.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutMe.cs" />
     <Compile Include="Models\AboutMeViewModel.cs" />
@@ -316,10 +320,14 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="StaticImages\Black_FaceBook_Logo.jpg" />
     <Content Include="StaticImages\Clean_Cursive_Signature.gif" />
-    <Content Include="StaticImages\Document-64.png" />
+    <Content Include="StaticImages\DiagonalBlue.jpg" />
     <Content Include="StaticImages\email_64x64.png" />
+    <Content Include="StaticImages\Gallery.jpg" />
     <Content Include="StaticImages\GitHub-Mark-64px.png" />
     <Content Include="StaticImages\In-Black-66px-TM.png" />
+    <Content Include="StaticImages\RainyDay.jpeg" />
+    <Content Include="StaticImages\SunnyForest.jpg" />
+    <Content Include="StaticImages\TerminalHelloWorld.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -443,6 +451,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707232240268_FlipBoard1.0.0.resx">
       <DependentUpon>201707232240268_FlipBoard1.0.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201707271955259_UpdateToDocuments.resx">
+      <DependentUpon>201707271955259_UpdateToDocuments.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

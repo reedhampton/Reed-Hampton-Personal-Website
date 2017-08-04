@@ -45,5 +45,11 @@ namespace ReedHampton.Models
         [Required]
         [Display(Name = "Skills(Seperate by a space)")]
         public string SkillsNeeded { get; set; }
+
+        [Display(Name = "GitHub URL")]
+        public string GitHubUrl { get; set; }
+
+        [Display(Name = "Project URL")]
+        public string ProjectUrl { get; set; }
     }
 }

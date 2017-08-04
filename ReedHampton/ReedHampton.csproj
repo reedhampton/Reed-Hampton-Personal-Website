@@ -276,6 +276,18 @@
     <Compile Include="Migrations\201707271955259_UpdateToDocuments.Designer.cs">
       <DependentUpon>201707271955259_UpdateToDocuments.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708041644546_ProjectPortfolioGitHub.cs" />
+    <Compile Include="Migrations\201708041644546_ProjectPortfolioGitHub.Designer.cs">
+      <DependentUpon>201708041644546_ProjectPortfolioGitHub.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708041659265_ProjectPortfolioGitHub2.0.0.cs" />
+    <Compile Include="Migrations\201708041659265_ProjectPortfolioGitHub2.0.0.Designer.cs">
+      <DependentUpon>201708041659265_ProjectPortfolioGitHub2.0.0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708041737087_ProjectPortfolioWebsiteURL.cs" />
+    <Compile Include="Migrations\201708041737087_ProjectPortfolioWebsiteURL.Designer.cs">
+      <DependentUpon>201708041737087_ProjectPortfolioWebsiteURL.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutMe.cs" />
     <Compile Include="Models\AboutMeViewModel.cs" />
@@ -319,7 +331,6 @@
     <Content Include="Scripts\respond.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="StaticImages\Black_FaceBook_Logo.jpg" />
-    <Content Include="StaticImages\Clean_Cursive_Signature.gif" />
     <Content Include="StaticImages\DiagonalBlue.jpg" />
     <Content Include="StaticImages\email_64x64.png" />
     <Content Include="StaticImages\Gallery.jpg" />
@@ -328,6 +339,7 @@
     <Content Include="StaticImages\RainyDay.jpeg" />
     <Content Include="StaticImages\SunnyForest.jpg" />
     <Content Include="StaticImages\TerminalHelloWorld.png" />
+    <Content Include="StaticImages\WebsiteURL.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -454,6 +466,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201707271955259_UpdateToDocuments.resx">
       <DependentUpon>201707271955259_UpdateToDocuments.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708041644546_ProjectPortfolioGitHub.resx">
+      <DependentUpon>201708041644546_ProjectPortfolioGitHub.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708041659265_ProjectPortfolioGitHub2.0.0.resx">
+      <DependentUpon>201708041659265_ProjectPortfolioGitHub2.0.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708041737087_ProjectPortfolioWebsiteURL.resx">
+      <DependentUpon>201708041737087_ProjectPortfolioWebsiteURL.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

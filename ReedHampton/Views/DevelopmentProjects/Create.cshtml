@@ -37,7 +37,7 @@
 
             <div class="form-group-lg">
                 @Html.LabelFor(m => m.ShortDescription, new { @class = "col-md-6 control-label" })
-                @Html.TextBoxFor(m => m.ShortDescription, new { @class = "form-control" })
+                @Html.TextAreaFor(m => m.ShortDescription, new { @class = "form-control" })
             </div>
 
             <br />
@@ -45,7 +45,7 @@
 
             <div class="form-group-lg">
                 @Html.LabelFor(m => m.LongName, new { @class = "col-md-6 control-label" })
-                @Html.TextBoxFor(m => m.LongName, new { @class = "form-control" })
+                @Html.TextAreaFor(m => m.LongName, new { @class = "form-control" })
             </div>
 
             <br />
@@ -53,7 +53,7 @@
 
             <div class="form-group-lg">
                 @Html.LabelFor(m => m.LongDescription, new { @class = "col-md-6 control-label" })
-                @Html.TextBoxFor(m => m.LongDescription, new { @class = "form-control" })
+                @Html.TextAreaFor(m => m.LongDescription, new { @class = "form-control" })
             </div>
 
             <br />
@@ -77,7 +77,23 @@
 
             <div class="form-group-lg">
                 @Html.LabelFor(m => m.SkillsNeeded, new { @class = "col-md-6 control-label" })
-                @Html.TextBoxFor(m => m.SkillsNeeded, new { @class = "form-control" })
+                @Html.TextAreaFor(m => m.SkillsNeeded, new { @class = "form-control" })
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.GitHubUrl, new { @class = "col-md-6 control-label" })
+                @Html.TextAreaFor(m => m.GitHubUrl, new { @class = "form-control" })
+            </div>
+
+            <br />
+            <br />
+
+            <div class="form-group-lg">
+                @Html.LabelFor(m => m.ProjectUrl, new { @class = "col-md-6 control-label" })
+                @Html.TextAreaFor(m => m.ProjectUrl, new { @class = "form-control" })
             </div>
 
             <br />

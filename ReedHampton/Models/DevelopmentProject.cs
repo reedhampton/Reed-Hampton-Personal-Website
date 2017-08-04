@@ -41,5 +41,8 @@ namespace ReedHampton.Models
         [Required]
         public string SkillsNeeded { get; set; }
 
+        public string GitHubUrl { get; set; }
+
+        public string ProjectUrl { get; set; }
     }
 }

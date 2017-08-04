@@ -65,6 +65,8 @@ namespace ReedHampton.Controllers
                 developmentProject.ShortDescription = model.ShortDescription;
                 developmentProject.ShortName = model.ShortName;
                 developmentProject.SkillsNeeded = model.SkillsNeeded;
+                developmentProject.GitHubUrl = model.GitHubUrl;
+                developmentProject.ProjectUrl = model.ProjectUrl;
 
                 if (model.ProjectThumbnailUpload != null && model.ProjectThumbnailUpload.ContentLength > 0)
                 {

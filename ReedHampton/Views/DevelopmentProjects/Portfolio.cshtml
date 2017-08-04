@@ -17,57 +17,55 @@
             background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/TerminalHelloWorld.jpg);
         }
 
-        #image_box {
+        #f1_container {
             overflow: hidden;
-            list-style: none;
-        }
-
-        #image_box li {
+            object-fit:contain;
             float: left;
-            text-align: center;
+            text-align: left;
+            width:1100px;
+            height:300px;
+            border-radius:25px; 
             margin: 0.4em;
-            padding-left:50px;
+            padding-left: 0px;
+            z-index: 1;
+            perspective: 0px;
         }
 
-        #image_box img {
+        #f1_card {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 0.8s linear;
+        }
+
+        #f1_container:hover #f1_card {
+            transform: rotateY(180deg);
+            box-shadow: -5px 5px 5px #aaa;
+            border-radius: 25px;
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            background-color: #660000;
             display: block;
+            background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/DiagonalBlue.jpg);
+            object-fit: cover;
         }
 
-        * {
-            box-sizing: border-box;
-        }
-
-        .row > .column {
-            padding: 0 8px;
-            padding-top: 20px;
-        }
-
-        .row:after {
-            content: "";
-            display: table;
-            clear: both;
-        }
-
-        img {
-            margin-bottom: -4px;
-        }
-
-        .demo {
-            opacity: 0.6;
-        }
-
-            .active,
-            .demo:hover {
-                opacity: 1;
+            .face.back {
+                display: block;
+                transform: rotateY(180deg);
+                box-sizing: border-box;
+                padding: 10px;
+                color: white;
+                text-align: center;
+                background-color: #660000;
+                background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/DiagonalBlue.jpg);
+                object-fit:cover;
             }
-
-        img.hover-shadow {
-            transition: 0.3s
-        }
-
-        .hover-shadow:hover {
-            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19)
-        }
     </style>
 
 <body>
@@ -92,24 +90,25 @@
 
         @{
             string img_path = "";
-            int project_id;
-            string project_name = "";
-            string project_shortDescription = "";
+            string end_link_tag = "</a>";
 
             string imagePath = "";
             string htmlImageText = "";
 
             int[] project_ids = new int[100];
-            string[] project_names = new string[100];
+            string[] project_GitHubURLS = new string[100];
+            string[] project_WebsiteURLS = new string[100];
+            string[] gitHub_Check = new string[100];
+            string[] project_ShortNames = new string[100];
             string[] project_shortDescriptions = new string[100];
+            string[] project_LongNames = new string[100];
+            string[] project_Dates = new string[100];
+            string[] project_LongDescriptions = new string[100];
             string[] ImageBoxHTML = new string[100];
             int count = 0;
 
             foreach (var i in Model)
             {
-                project_id = i.id;
-                project_name = i.ShortName;
-                project_shortDescription = i.ShortDescription;
                 img_path = i.ProjectImageUrl;
 
                 if (img_path != null)
@@ -117,13 +116,17 @@
                     img_path = img_path.Remove(0, 2);
 
                     imagePath = @Request.ApplicationPath + img_path;
-                    htmlImageText = "<img src=\"" + imagePath + "\" style=\"width:300px; height:300px; object-fit:cover; overflow: hidden;\" class=\"hover-shadow cursor\")>";
-                    project_name = "<h2 style=\"text-align:center; font-family:Garamond;\">" + project_name + "</h2>";
-                    project_shortDescription = "<p style=\"text-align:center; font-family:Garamond; font-size:18px; color: #660000;\">" + project_shortDescription + "</p>";
+                    htmlImageText = "<img src=\"" + imagePath + "\" style=\"width:500px; height:300px; padding-top:25px; padding-bottom:25px; padding-left:50px; object-fit:cover; overflow: hidden;\" class=\"hover-shadow cursor\")>";
 
-                    project_ids[count] = project_id;
-                    project_names[count] = project_name;
-                    project_shortDescriptions[count] = project_shortDescription;
+                    project_ids[count] = i.id;
+                    project_GitHubURLS[count] = "<a href=\"" + i.GitHubUrl + "\" target=\"_blank\">";
+                    project_WebsiteURLS[count] = "<a href=\"" + i.ProjectUrl + "\" target=\"_blank\">";
+                    gitHub_Check[count] = i.GitHubUrl;
+                    project_ShortNames[count] = i.ShortName;
+                    project_shortDescriptions[count] = i.ShortDescription;
+                    project_LongNames[count] = i.LongName;
+                    project_Dates[count] = i.Date;
+                    project_LongDescriptions[count] = i.LongDescription;
                     ImageBoxHTML[count] = htmlImageText;
 
                     count++;
@@ -133,28 +136,54 @@
 
         <!-------------------------------------------------------THUMBNAILS------------------------------------------------------------------------------------------------->
 
-        <div class="row">
 
-            <ul id="image_box">
+        @for (int i = 0; i < count; ++i)
+        {
+            <div class="row" style="padding-top:20px; padding-bottom:40px;">
+                <div id="f1_container">
 
-                @for (int i = 0; i < count; ++i)
-            {
-                if (ImageBoxHTML[i] != null)
+                    <div id="f1_card">
+
+                        <div class="front face">
+                            @(new HtmlString(ImageBoxHTML[i]))
+
+                            <h1 style="clear:both; float:right; padding-right:85px; font-family:Garamond; font-size:50px; color:#f5eee1;">@project_ShortNames[i]</h1>
+                            <h3 style="padding-top:25px; padding-right:85px; font-family:Garamond; font-size:30px; color:#f5eee1;">@project_shortDescriptions[i]</h3>
+
+                        </div>
+
+                        <div class="back face center">
+
+                            <h4 style="font-size:24px; font-style:oblique; font-family: 'Century Gothic'; color:#f5eee1;">@project_LongNames[i]</h4>
+                            <h5 style="font-size:20px; font-style:oblique; font-family: 'Century Gothic'; color:#f5eee1;">@project_Dates[i]</h5>
+                            <p style="padding-top:20px; font-size:18px; font-family: 'Century Gothic'; color:#f5eee1;">@project_LongDescriptions[i]</p>
+
+                            @if (gitHub_Check[i] != null)
+                            {
+                                @(new HtmlString(project_GitHubURLS[i]))
+                                    <img style="float:left; padding-top:15px;" src="~/StaticImages/GitHub-Mark-64px.png" />
+                                @(new HtmlString(end_link_tag))
+
+                                @(new HtmlString(project_WebsiteURLS[i]))
+                                    <img style="float:left; padding-top:15px; padding-left:15px;" src="~/StaticImages/WebsiteURL.png" />
+                                @(new HtmlString(end_link_tag))
+                            }
+
+
+                        </div>
+
+                    </div>
+                </div>
+
+                @if (User.Identity.IsAuthenticated)
                 {
-                        <li>@(new HtmlString(ImageBoxHTML[i])) @(new HtmlString(project_names[i]))  @(new HtmlString(project_shortDescriptions[i])) </li>
-
-                        if (User.Identity.IsAuthenticated)
-                        {
-                            <li>
-                                <input type="button" class="btn btn-success" style="" value="Edit" onclick="location.href='@Url.Action("Edit", "DevelopmentProjects", new { id = project_ids[i]} )'" />
-                                <input type="button" class="btn btn-danger" style="" value="Delete" onclick="location.href='@Url.Action("Delete", "DevelopmentProjects", new { id = project_ids[i] })'" />
-                            </li>
-                        }
-                    }
+                    <div class="row">
+                        <input type="button" class="btn btn-success" style="" value="Edit" onclick="location.href='@Url.Action("Edit", "DevelopmentProjects", new { id = project_ids[i] })'" />
+                        <input type="button" class="btn btn-danger" style="" value="Delete" onclick="location.href='@Url.Action("Delete", "DevelopmentProjects", new { id = project_ids[i] })'" />
+                    </div>
                 }
 
-            </ul>
-
-        </div>
+            </div>
+        }
 
 </body>

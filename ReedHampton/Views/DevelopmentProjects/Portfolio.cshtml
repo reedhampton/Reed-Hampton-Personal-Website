@@ -13,6 +13,17 @@
             border-top: 0.5px solid #660000;
         }
 
+        .bubble {
+            width: 100px;
+            height: 50px;
+            border-radius: 50%;
+            background: #f5eee1;
+            -moz-transition-property: -moz-transform;
+            -moz-transition-duration: 1s;
+            text-align: center;
+            overflow: hidden;
+        }
+
         #darken {
             background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/TerminalHelloWorld.jpg);
         }
@@ -65,6 +76,7 @@
                 background-color: #660000;
                 background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/DiagonalBlue.jpg);
                 object-fit:cover;
+                position:relative;
             }
     </style>
 
@@ -104,6 +116,7 @@
             string[] project_LongNames = new string[100];
             string[] project_Dates = new string[100];
             string[] project_LongDescriptions = new string[100];
+            string[] project_Skill = new string[100];
             string[] ImageBoxHTML = new string[100];
             int count = 0;
 
@@ -127,6 +140,7 @@
                     project_LongNames[count] = i.LongName;
                     project_Dates[count] = i.Date;
                     project_LongDescriptions[count] = i.LongDescription;
+                    project_Skill[count] = i.SkillsNeeded;
                     ImageBoxHTML[count] = htmlImageText;
 
                     count++;
@@ -147,9 +161,10 @@
                         <div class="front face">
                             @(new HtmlString(ImageBoxHTML[i]))
 
-                            <h1 style="clear:both; float:right; padding-right:85px; font-family:Garamond; font-size:50px; color:#f5eee1;">@project_ShortNames[i]</h1>
-                            <h3 style="padding-top:25px; padding-right:85px; font-family:Garamond; font-size:30px; color:#f5eee1;">@project_shortDescriptions[i]</h3>
-
+                            <div style="position:absolute; top:15px; left:575px; max-width:450px">
+                                <h1 style="font-family:Garamond; font-size:50px; color:#f5eee1;">@project_ShortNames[i]</h1>
+                                <h3 style="font-family:Garamond; font-size:24px; color:#f5eee1;">@project_shortDescriptions[i]</h3>
+                            </div>
                         </div>
 
                         <div class="back face center">
@@ -161,14 +176,19 @@
                             @if (gitHub_Check[i] != null)
                             {
                                 @(new HtmlString(project_GitHubURLS[i]))
-                                    <img style="float:left; padding-top:15px;" src="~/StaticImages/GitHub-Mark-64px.png" />
+                                    <img style="position:absolute; left:15px; bottom:25px;" src="~/StaticImages/GitHub-Mark-64px.png" />
                                 @(new HtmlString(end_link_tag))
 
                                 @(new HtmlString(project_WebsiteURLS[i]))
-                                    <img style="float:left; padding-top:15px; padding-left:15px;" src="~/StaticImages/WebsiteURL.png" />
+                                    <img style="position:absolute; left:100px; bottom:25px;" src="~/StaticImages/WebsiteURL.png" />
                                 @(new HtmlString(end_link_tag))
                             }
 
+                            <!--
+                            <div class="bubble">
+                                    <p style="color:#660000; padding-top:15px;">project_Skill[i] </p>
+                            </div>
+                            -->
 
                         </div>
 
@@ -178,8 +198,8 @@
                 @if (User.Identity.IsAuthenticated)
                 {
                     <div class="row">
-                        <input type="button" class="btn btn-success" style="" value="Edit" onclick="location.href='@Url.Action("Edit", "DevelopmentProjects", new { id = project_ids[i] })'" />
-                        <input type="button" class="btn btn-danger" style="" value="Delete" onclick="location.href='@Url.Action("Delete", "DevelopmentProjects", new { id = project_ids[i] })'" />
+                        <input type="button" class="btn btn-success" style="margin-top:20px;" value="Edit" onclick="location.href='@Url.Action("Edit", "DevelopmentProjects", new { id = project_ids[i] })'" />
+                        <input type="button" class="btn btn-danger" style="margin-top:15px;" value="Delete" onclick="location.href='@Url.Action("Delete", "DevelopmentProjects", new { id = project_ids[i] })'" />
                     </div>
                 }
 

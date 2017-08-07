@@ -76,8 +76,8 @@
             <br />
 
             <div class="form-group-lg">
-                @Html.LabelFor(m => m.SkillsNeeded, new { @class = "col-md-6 control-label" })
-                @Html.TextAreaFor(m => m.SkillsNeeded, new { @class = "form-control" })
+                @Html.LabelFor(m => m.SkillList, new { @class = "col-md-6 control-label" })
+                @Html.EnumDropDownListFor(m => m.SkillList, new { @class = "form-control" })
             </div>
 
             <br />

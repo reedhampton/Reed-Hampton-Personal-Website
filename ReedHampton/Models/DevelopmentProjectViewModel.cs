@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
+using System.Web.Mvc;
 
 namespace ReedHampton.Models
 {
@@ -42,8 +43,7 @@ namespace ReedHampton.Models
         [Display(Name = "Long Description")]
         public string LongDescription { get; set; }
 
-        [Required]
-        [Display(Name = "Skills(Seperate by a space)")]
+        [Display(Name = "Skills(Select all that apply)")]
         public string SkillsNeeded { get; set; }
 
         [Display(Name = "GitHub URL")]
@@ -51,5 +51,18 @@ namespace ReedHampton.Models
 
         [Display(Name = "Project URL")]
         public string ProjectUrl { get; set; }
+
+        public skills SkillList { get; set; }
+
+        public enum skills
+        {
+            HTML = 1,
+            CSS,
+            Javascript,
+            Ruby,
+            Rails,
+            ASPnet,
+            C
+        }
     }
 }

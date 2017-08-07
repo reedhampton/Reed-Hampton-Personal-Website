@@ -288,6 +288,14 @@
     <Compile Include="Migrations\201708041737087_ProjectPortfolioWebsiteURL.Designer.cs">
       <DependentUpon>201708041737087_ProjectPortfolioWebsiteURL.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201708071938255_DevelopmentSkills1.0.0.cs" />
+    <Compile Include="Migrations\201708071938255_DevelopmentSkills1.0.0.Designer.cs">
+      <DependentUpon>201708071938255_DevelopmentSkills1.0.0.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201708071949102_DevelopmentSkills2.0.0.cs" />
+    <Compile Include="Migrations\201708071949102_DevelopmentSkills2.0.0.Designer.cs">
+      <DependentUpon>201708071949102_DevelopmentSkills2.0.0.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AboutMe.cs" />
     <Compile Include="Models\AboutMeViewModel.cs" />
@@ -475,6 +483,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201708041737087_ProjectPortfolioWebsiteURL.resx">
       <DependentUpon>201708041737087_ProjectPortfolioWebsiteURL.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708071938255_DevelopmentSkills1.0.0.resx">
+      <DependentUpon>201708071938255_DevelopmentSkills1.0.0.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201708071949102_DevelopmentSkills2.0.0.resx">
+      <DependentUpon>201708071949102_DevelopmentSkills2.0.0.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

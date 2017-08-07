@@ -64,9 +64,12 @@ namespace ReedHampton.Controllers
                 developmentProject.LongName = model.LongName;
                 developmentProject.ShortDescription = model.ShortDescription;
                 developmentProject.ShortName = model.ShortName;
-                developmentProject.SkillsNeeded = model.SkillsNeeded;
+
+                string skill = model.SkillList.ToString();
+                developmentProject.SkillsNeeded = skill;
                 developmentProject.GitHubUrl = model.GitHubUrl;
                 developmentProject.ProjectUrl = model.ProjectUrl;
+
 
                 if (model.ProjectThumbnailUpload != null && model.ProjectThumbnailUpload.ContentLength > 0)
                 {
@@ -109,7 +112,7 @@ namespace ReedHampton.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id,ProjectImageUrl,ShortName,ShortDescription,LongName,Category,Date,LongDescription,SkillsNeeded")] DevelopmentProject developmentProject)
+        public ActionResult Edit([Bind(Include = "id,ProjectImageUrl,ShortName,ShortDescription,LongName,Category,Date,LongDescription,SkillsNeeded,GitHubUrl,ProjectUrl")] DevelopmentProject developmentProject)
         {
             if (ModelState.IsValid)
             {

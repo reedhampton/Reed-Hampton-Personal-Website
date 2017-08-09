@@ -16,7 +16,6 @@ namespace ReedHampton.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ContactInformation
-        [AllowAnonymous]
         public ActionResult Index()
         {
             return View(db.ContactInformations.ToList());

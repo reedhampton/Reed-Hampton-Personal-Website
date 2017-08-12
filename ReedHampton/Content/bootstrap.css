@@ -5646,6 +5646,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
         .navbar-inverse .navbar-brand:focus {
             color: #ffffff;
             background-color: #660000;
+            -moz-transition: all .3s ease-in;
+            -o-transition: all .3s ease-in;
+            -webkit-transition: all .3s ease-in;
+            transition: all .3s ease-in;
         }
 
     .navbar-inverse .navbar-text {
@@ -5659,6 +5663,10 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
         .navbar-inverse .navbar-nav > li > a:hover,
         .navbar-inverse .navbar-nav > li > a:focus {
             color: #ffffff;
+            -moz-transition: all .3s ease-in;
+            -o-transition: all .3s ease-in;
+            -webkit-transition: all .3s ease-in;
+            transition: all .3s ease-in;
             background-color: #660000;
         }
 
@@ -5666,7 +5674,7 @@ select[multiple].input-group-sm > .input-group-btn > .btn {
     .navbar-inverse .navbar-nav > .active > a:hover,
     .navbar-inverse .navbar-nav > .active > a:focus {
         color: #ffffff;
-        background-color: #660000;
+        background-color: cyan;
     }
 
     .navbar-inverse .navbar-nav > .disabled > a,

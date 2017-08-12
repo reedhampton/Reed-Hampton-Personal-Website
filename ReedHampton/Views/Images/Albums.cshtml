@@ -47,17 +47,17 @@
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: #f5eee1;
+            background-color: rgba(0, 0, 0, 0.8);
         }
 
         /* Modal Content */
         .modal-content {
             position: relative;
-            background-color: #f5eee1;
+            background-color: black;
             margin: auto;
             padding: 0;
-            width: 850px;
-            height:600px;
+            width: 80%;
+            height: 80%;
         }
 
         /* The Close Button */
@@ -65,7 +65,7 @@
             color: #660000;
             position: absolute;
             top: 100px;
-            right: 300px;
+            right: 100px;
             font-size: 48px;
             font-weight: bold;
             opacity:.9;
@@ -80,6 +80,8 @@
 
         .mySlides {
             display: none;
+            width: 100%;
+            height: 100%;
         }
 
         .cursor {
@@ -113,7 +115,7 @@
             /* On hover, add a black background color with a little bit see-through */
             .prev:hover,
             .next:hover {
-                background-color: rgba(0, 0, 0, 0.8);
+                background-color: rgba(0, 0, 0, 0.7);
             }
 
         img {
@@ -121,12 +123,13 @@
         }
 
         .caption-container {
-            text-align: center;
-            background-color: darkgrey;
-            padding: 2px 16px;
+            position: absolute;
+            right: 0px;
+            bottom: -55px;
+            background-color: transparent;
             color: white;
             font-size: 30px;
-            font-family:Garamond;
+            font-family: Garamond;
         }
 
         .demo {
@@ -204,7 +207,7 @@
 
                     imagePath = @Request.ApplicationPath + img_path;
                     thumbnailImage = "<div class=\"column color\" style=\"display:inline-block;\"><img src=\"" + imagePath + "\" style=\"width:300px; height:300px; object-fit:cover; overflow: hidden;\" onclick=\"openModal();currentSlide(" + img_number + ")\" class=\"hover-shadow cursor\")></div>";
-                    expandedImage = "<div class=\"mySlides\"><img src=\"" + imagePath + "\" style=\"width:100%; max-height:575px;\"><p class =\"caption-container\">" + imageCaption + "</p></div>";
+                    expandedImage = "<div class=\"mySlides\"><img src=\"" + imagePath + "\" style=\"display:block; margin:auto; max-width:90%; max-height:100%;\"><p class =\"caption-container\">" + imageCaption + "</p></div>";
 
                     thumbnailHTML[count] = thumbnailImage;
                     expandedHTML[count] = expandedImage;

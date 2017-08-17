@@ -114,7 +114,7 @@ namespace Reeds.Controllers
                 {
                     await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("Home", "AboutMe");
                 }
                 AddErrors(result);
             }

@@ -48,32 +48,72 @@
     <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=1.0.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.1.0.3\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
-    <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.ComponentModel.DataAnnotations" />
-    <Reference Include="System.Core" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
-    <Reference Include="System.Web.Abstractions" />
-    <Reference Include="System.Web.Routing" />
-    <Reference Include="System.Xml" />
-    <Reference Include="System.Configuration" />
-    <Reference Include="System.Web.Services" />
-    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.CSharp">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Drawing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Entity">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.ApplicationServices">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Core">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Data.DataSetExtensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml.Linq">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Extensions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Abstractions">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Routing">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Xml">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.Services">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.EnterpriseServices">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http">
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <Private>True</Private>
@@ -316,17 +356,49 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.css" />
-    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DocumentUploads\Campagna_Italy.jpg" />
+    <Content Include="DocumentUploads\Hampton_Reed.jpg" />
+    <Content Include="DocumentUploads\QuestionResponse.txt" />
+    <Content Include="DocumentUploads\TokyoTower.jpg" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="ImageUploads\AlbumThumbnailUploads\2017-08-04 %281%29.png" />
+    <Content Include="ImageUploads\AlbumThumbnailUploads\2017-08-04.png" />
+    <Content Include="ImageUploads\AlbumThumbnailUploads\Hampton_Reed.jpg" />
+    <Content Include="ImageUploads\AlbumThumbnailUploads\Mount_Hua_Shaanxi_Province.jpg" />
+    <Content Include="ImageUploads\AlbumThumbnailUploads\Skyline_KNNW.png" />
+    <Content Include="ImageUploads\AlbumThumbnailUploads\TokyoTower.jpg" />
+    <Content Include="ImageUploads\AlbumThumbnailUploads\TrainFromPotrerilloMineToDiegodeAlmagro_Chile.jpg" />
+    <Content Include="ImageUploads\Campagna_Italy.jpg" />
+    <Content Include="ImageUploads\CityAtNight.jpg" />
+    <Content Include="ImageUploads\Derr_Moon.jpg" />
+    <Content Include="ImageUploads\DevelopmentThumbnailUploads\Finance Hub GAANT.png" />
+    <Content Include="ImageUploads\FlipboardThumbnailUploads\CityAtNight.jpg" />
+    <Content Include="ImageUploads\FlipboardThumbnailUploads\Derr_Moon.jpg" />
+    <Content Include="ImageUploads\FlipboardThumbnailUploads\KastellorizoIsland_Greece.jpg" />
+    <Content Include="ImageUploads\FlipboardThumbnailUploads\LowShotJapan.jpg" />
+    <Content Include="ImageUploads\FlipboardThumbnailUploads\TokyoTower.jpg" />
     <Content Include="ImageUploads\Germany-Cover-Photo.jpg" />
+    <Content Include="ImageUploads\Hampton_Reed.jpg" />
+    <Content Include="ImageUploads\KastellorizoIsland_Greece.jpg" />
+    <Content Include="ImageUploads\Mount_Hua_Shaanxi_Province.jpg" />
+    <Content Include="ImageUploads\RievaulxAbbey.jpg" />
+    <Content Include="ImageUploads\Skyline_KNNW.png" />
+    <Content Include="ImageUploads\TokyoTower.jpg" />
+    <Content Include="ImageUploads\TrainFromPotrerilloMineToDiegodeAlmagro_Chile.jpg" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="ApplicationInsights.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
+    <Content Include="DocumentUploads\CF Logos.xls" />
+    <Content Include="DocumentUploads\DistrictOnLutherSignedLease.pdf" />
+    <Content Include="DocumentUploads\Finance Hub GANNT Chart.xlsx" />
+    <Content Include="DocumentUploads\Resume 1-24-2017.docx" />
+    <Content Include="DocumentUploads\Resume 1-24-2017.pdf" />
+    <None Include="Properties\PublishProfiles\reedhampton - Web Deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -340,13 +412,16 @@
     <Content Include="Scripts\respond.min.js" />
     <Content Include="StaticImages\Black_FaceBook_Logo.jpg" />
     <Content Include="StaticImages\DiagonalBlue.jpg" />
+    <Content Include="StaticImages\DocumentGolden.png" />
     <Content Include="StaticImages\email_64x64.png" />
     <Content Include="StaticImages\Gallery.jpg" />
     <Content Include="StaticImages\GitHub-Mark-64px.png" />
     <Content Include="StaticImages\In-Black-66px-TM.png" />
+    <Content Include="StaticImages\PictureGolden.png" />
     <Content Include="StaticImages\RainyDay.jpeg" />
+    <Content Include="StaticImages\SpreadSheetGolden.png" />
     <Content Include="StaticImages\SunnyForest.jpg" />
-    <Content Include="StaticImages\TerminalHelloWorld.png" />
+    <Content Include="StaticImages\TerminalHelloWorld.jpg" />
     <Content Include="StaticImages\WebsiteURL.png" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">

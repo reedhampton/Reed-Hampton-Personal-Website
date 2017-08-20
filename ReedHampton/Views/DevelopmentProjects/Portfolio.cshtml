@@ -5,41 +5,43 @@
 }
 
     <style>
-        body {
-            background-color: #f5eee1;
-        }
+    body {
+        background-color: #f5eee1;
+    }
 
-        hr {
-            border-top: 0.5px solid #660000;
-        }
+    hr {
+        border-top: 0.5px solid #660000;
+    }
 
-        .bubble {
-            width: 100px;
-            height: 50px;
-            border-radius: 50%;
-            background: #f5eee1;
-            -moz-transition-property: -moz-transform;
-            -moz-transition-duration: 1s;
-            text-align: center;
-            overflow: hidden;
-        }
+    .bubble {
+        width: 100px;
+        height: 50px;
+        border-radius: 50%;
+        background: #f5eee1;
+        -moz-transition-property: -moz-transform;
+        -moz-transition-duration: 1s;
+        text-align: center;
+        overflow: hidden;
+    }
 
-        #darken {
-            background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/TerminalHelloWorld.jpg);
-        }
+    #darken {
+        background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/TerminalHelloWorld.jpg);
+    }
 
         #f1_container {
             overflow: hidden;
-            object-fit:contain;
+            object-fit: contain;
             float: left;
             text-align: left;
-            width:1100px;
-            height:300px;
-            border-radius:25px; 
+            width: 1100px;
+            height: 300px;
+            border-radius: 25px;
+            -webkit-border-radius: 25px;
+            -moz-border-radius: 25px;
             margin: 0.4em;
             padding-left: 0px;
             z-index: 1;
-            perspective: 0px;
+            -webkit-perspective: 5000px;
         }
 
         #f1_card {
@@ -47,18 +49,27 @@
             height: 100%;
             transform-style: preserve-3d;
             transition: all 0.8s linear;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transition: all 0.8s linear;
         }
 
         #f1_container:hover #f1_card {
             transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
             box-shadow: -5px 5px 5px #aaa;
-            border-radius: 25px;
+
         }
 
         .face {
             position: absolute;
             width: 100%;
             height: 100%;
+            -webkit-perspective: 0;
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translate3d(0,0,0);
+            visibility: visible;
             backface-visibility: hidden;
             background-color: #660000;
             display: block;
@@ -69,21 +80,176 @@
             .face.back {
                 display: block;
                 transform: rotateY(180deg);
+                -moz-transform: rotateY(180deg);
+                -webkit-transform: rotateY(180deg);
+                -o-transform: rotateY(180deg);
                 box-sizing: border-box;
                 padding: 10px;
                 color: white;
                 text-align: center;
                 background-color: #660000;
                 background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/DiagonalBlue.jpg);
-                object-fit:cover;
-                position:relative;
+                object-fit: cover;
+                position: relative;
             }
+
+        .Coverimage {
+            width: 500px;
+            height: 300px;
+            padding-top: 25px;
+            padding-bottom: 25px;
+            padding-left: 50px;
+            object-fit: cover;
+            overflow: hidden;
+        }
+
+        .ImagelinkOne {
+            position: absolute;
+            left: 15px;
+            bottom: 25px;
+        }
+
+        .ImagelinkTwo {
+            position: absolute;
+            left: 100px;
+            bottom: 25px;
+        }
+        .FrontTitles {
+            position: absolute;
+            top: 15px;
+            left: 575px;
+            max-width: 450px
+        }
+
+        .FrontTitleOne {
+            font-family: Garamond;
+            font-size: 50px;
+            color: #f5eee1;
+        }
+
+        .FrontTitleTwo {
+            padding-top: 10px;
+            font-family: Garamond;
+            font-size: 24px;
+            color: #f5eee1;
+        }
+
+    @@media screen and (max-width: 500px)
+    {
+        #f1_container {
+            overflow: hidden;
+            object-fit: contain;
+            width: 90%;
+            height: auto;
+            -webkit-border-radius: 25px;
+            -moz-border-radius: 25px;
+            border-radius: 25px;
+            z-index: 1;
+            -webkit-perspective: 5000px;
+            margin-left: 5%;
+        }
+
+        #f1_card {
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+            transition: all 0.8s linear;
+            -webkit-transform-style: preserve-3d;
+            -webkit-transition: all 0.8s linear;
+        }
+
+        #f1_container:hover #f1_card {
+            transform: rotateY(180deg);
+            -moz-transform: rotateY(180deg);
+            -webkit-transform: rotateY(180deg);
+            -o-transform: rotateY(180deg);
+            box-shadow: -5px 5px 5px #aaa;
+        }
+
+        .face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            -webkit-perspective: 0;
+            -webkit-backface-visibility: hidden;
+            -webkit-transform: translate3d(0,0,0);
+            visibility: visible;
+            backface-visibility: hidden;
+            background-color: #660000;
+            display: block;
+            background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/DiagonalBlue.jpg);
+            object-fit: cover;
+        }
+
+            .face.back {
+                display: block;
+                transform: rotateY(180deg);
+                -moz-transform: rotateY(180deg);
+                -webkit-transform: rotateY(180deg);
+                -o-transform: rotateY(180deg);
+                box-sizing: border-box;
+                padding: 10px;
+                color: white;
+                text-align: center;
+                background-color: #660000;
+                background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/DiagonalBlue.jpg);
+                object-fit: cover;
+                position: relative;
+            }
+
+        .FrontTitles {
+            position:absolute;
+            top:10px;
+            left: 15px;
+            font-size:24px;
+        }
+
+        .FrontTitleOne {
+            font-family: Garamond;
+            font-size: 40px;
+            color: #f5eee1;
+            text-align:center;
+        }
+
+        .FrontTitleTwo {
+            padding-top: 10px;
+            font-family: Garamond;
+            font-size: 20px;
+            color: #f5eee1;
+            text-align:center;
+        }
+
+        .Coverimage {
+            visibility:hidden;
+        }
+
+        .ImagelinkOne{
+            visibility:hidden;
+        }
+
+        .ImagelinkTwo{
+            visibility:hidden;
+        }
+
+        h4{
+            font-size:16px;
+        }
+
+        h5{
+            font-size:14px;
+        }
+
+        p{
+            font-size:12px;
+        }
+    }
     </style>
 
 <body>
 
     <div class="jumbotron" id="darken" style="background-size:cover; margin-top:60px;">
-        <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px; color:white;">Project Portfolio</h1>
+        <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px; color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+        Project Portfolio</h1>
     </div>
 
     <hr />
@@ -111,6 +277,7 @@
             string[] project_GitHubURLS = new string[100];
             string[] project_WebsiteURLS = new string[100];
             string[] gitHub_Check = new string[100];
+            string[] projectURL_Check = new string[100];
             string[] project_ShortNames = new string[100];
             string[] project_shortDescriptions = new string[100];
             string[] project_LongNames = new string[100];
@@ -129,12 +296,13 @@
                     img_path = img_path.Remove(0, 2);
 
                     imagePath = @Request.ApplicationPath + img_path;
-                    htmlImageText = "<img src=\"" + imagePath + "\" style=\"width:500px; height:300px; padding-top:25px; padding-bottom:25px; padding-left:50px; object-fit:cover; overflow: hidden;\" class=\"hover-shadow cursor\")>";
+                    htmlImageText = "<img src=\"" + imagePath + "\" class=\"Coverimage hover-shadow cursor\")>";
 
                     project_ids[count] = i.id;
                     project_GitHubURLS[count] = "<a href=\"" + i.GitHubUrl + "\" target=\"_blank\">";
                     project_WebsiteURLS[count] = "<a href=\"" + i.ProjectUrl + "\" target=\"_blank\">";
                     gitHub_Check[count] = i.GitHubUrl;
+                    projectURL_Check[count] = i.ProjectUrl;
                     project_ShortNames[count] = i.ShortName;
                     project_shortDescriptions[count] = i.ShortDescription;
                     project_LongNames[count] = i.LongName;
@@ -158,16 +326,16 @@
 
                     <div id="f1_card">
 
-                        <div class="front face">
+                        <div class="front face" onclick="">
                             @(new HtmlString(ImageBoxHTML[i]))
 
-                            <div style="position:absolute; top:15px; left:575px; max-width:450px">
-                                <h1 style="font-family:Garamond; font-size:50px; color:#f5eee1;">@project_ShortNames[i]</h1>
-                                <h3 style="padding-top:10px; font-family:Garamond; font-size:24px; color:#f5eee1;">@project_shortDescriptions[i]</h3>
+                            <div class="FrontTitles">
+                                <h1 class="FrontTitleOne">@project_ShortNames[i]</h1>
+                                <h3 class="FrontTitleTwo">@project_shortDescriptions[i]</h3>
                             </div>
                         </div>
 
-                        <div class="back face center">
+                        <div class="back face center" onclick="">
 
                             <h4 style="font-size:24px; font-style:oblique; font-family: 'Century Gothic'; color:#f5eee1;">@project_LongNames[i]</h4>
                             <h5 style="font-size:20px; font-style:oblique; font-family: 'Century Gothic'; color:#f5eee1;">@project_Dates[i]</h5>
@@ -176,13 +344,17 @@
                             @if (gitHub_Check[i] != null)
                             {
                                 @(new HtmlString(project_GitHubURLS[i]))
-                                    <img style="position:absolute; left:15px; bottom:25px;" src="~/StaticImages/GitHub-Mark-64px.png" />
-                                @(new HtmlString(end_link_tag))
-
-                                @(new HtmlString(project_WebsiteURLS[i]))
-                                    <img style="position:absolute; left:100px; bottom:25px;" src="~/StaticImages/WebsiteURL.png" />
+                                    <img class="ImagelinkOne" src="~/StaticImages/GitHub-Mark-64px.png" />
                                 @(new HtmlString(end_link_tag))
                             }
+
+                            @if (projectURL_Check[i] != null)
+                            {
+                                @(new HtmlString(project_WebsiteURLS[i]))
+                                    <img class="ImagelinkTwo" src="~/StaticImages/WebsiteURL.png" />
+                                @(new HtmlString(end_link_tag))
+                            }
+
 
                             <!--
                             <div class="bubble">

@@ -39,7 +39,8 @@
 <body>
 
     <div  class="jumbotron" id="darken" style="background-size:cover; margin-top:60px;">
-        <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px; color:white;">Photo Gallery</h1>
+        <h1 style="text-align:center; font-family:Garamond; font-size:60px; padding-top:25px; padding-bottom:25px; color:white;text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">
+        Photo Gallery</h1>
     </div>
 
     <hr />
@@ -75,8 +76,8 @@
 
                 <a href="@Url.Action("Albums" , "Images" , new{albumId = album.Id , albumName = album.Name})" style="text-decoration:none;">
                     @(new HtmlString(start))
-                    <h1>@album.Name</h1>
-                    <p class="lead">@album.Description</p>
+                    <h1 style="color:white; text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;">@album.Name</h1>
+                    <p class="lead" style="color:white; text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;">@album.Description</p>
                     @(new HtmlString(close))
                 </a>
 

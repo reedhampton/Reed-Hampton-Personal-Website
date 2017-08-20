@@ -4,6 +4,20 @@
     #ContactMe {
         margin-left: 400px;
     }
+
+    li:hover{
+        background-color:#660000;
+        color:white;
+    }
+
+    @@media screen and (max-width: 500px)
+    {
+        #ContactMe{
+            margin-left: 0px;
+        }
+    }
+    
+
 </style>
 <html>
 <head>
@@ -15,9 +29,9 @@
 </head>
 
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="navbar navbar-inverse navbar-fixed-top" style="background-color:#660000;">
         <div class="container">
-            <div class="navbar-header">
+            <div class="navbar-header" style="background-color:#660000;">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -25,7 +39,7 @@
                 </button>
                 @Html.ActionLink("Reed Hampton", "Home", "AboutMe", new { area = "" }, new { @class = "navbar-brand" })
             </div>
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="background-color:#660000;">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Development", "Portfolio", "DevelopmentProjects")</li>
                     <li>@Html.ActionLink("Documents", "DocumentPortfolio", "ProfessionalDocuments")</li>

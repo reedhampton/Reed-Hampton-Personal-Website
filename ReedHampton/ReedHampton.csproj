@@ -416,6 +416,7 @@
     <Content Include="StaticImages\email_64x64.png" />
     <Content Include="StaticImages\Gallery.jpg" />
     <Content Include="StaticImages\GitHub-Mark-64px.png" />
+    <Content Include="StaticImages\GitHubWhite-BlackOutline.png" />
     <Content Include="StaticImages\In-Black-66px-TM.png" />
     <Content Include="StaticImages\PictureGolden.png" />
     <Content Include="StaticImages\RainyDay.jpeg" />

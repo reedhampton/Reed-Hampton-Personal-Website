@@ -114,6 +114,15 @@
             left: 100px;
             bottom: 25px;
         }
+
+        .ImagelinkMobileOne{
+            visibility:hidden;
+        }
+
+        .ImagelinkMobileTwo{
+            visibility:hidden;
+        }
+
         .FrontTitles {
             position: absolute;
             top: 15px;
@@ -179,6 +188,7 @@
             display: block;
             background-image: linear-gradient( rgba(0, 0, 0, 0.35), rgba(0, 0, 0, 0.35) ), url(../../StaticImages/DiagonalBlue.jpg);
             object-fit: cover;
+            overflow:visible;
         }
 
             .face.back {
@@ -229,6 +239,20 @@
 
         .ImagelinkTwo{
             visibility:hidden;
+        }
+
+        .ImagelinkMobileOne {
+            visibility: visible;
+            position:absolute;
+            bottom: 8%;
+            left:2%;          
+        }
+
+        .ImagelinkMobileTwo {
+            visibility: visible;
+            position:absolute;
+            bottom: 8%;
+            left:80%;
         }
 
         h4{
@@ -333,6 +357,21 @@
                                 <h1 class="FrontTitleOne">@project_ShortNames[i]</h1>
                                 <h3 class="FrontTitleTwo">@project_shortDescriptions[i]</h3>
                             </div>
+
+                            @if (gitHub_Check[i] != null)
+                            {
+                                @(new HtmlString(project_GitHubURLS[i]))
+                                    <img class="ImagelinkMobileOne" src="~/StaticImages/GitHubWhite-BlackOutline.png" />
+                                @(new HtmlString(end_link_tag))
+                            }
+
+                            @if (projectURL_Check[i] != null)
+                            {
+                                @(new HtmlString(project_WebsiteURLS[i]))
+                                    <img class="ImagelinkMobileTwo" src="~/StaticImages/WebsiteURL.png" />
+                                @(new HtmlString(end_link_tag))
+                            }
+
                         </div>
 
                         <div class="back face center" onclick="">
